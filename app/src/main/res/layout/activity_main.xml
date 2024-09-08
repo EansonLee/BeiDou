@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <Button
+        android:id="@+id/btn_native_crash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NATIVE CRASH"
+        android:textColor="@color/white"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/btn_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:text="add"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/btn_other"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:text="other"
+        android:textColor="@color/white" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_add"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="40dp"
+        android:background="#00BCD4"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+</LinearLayout>

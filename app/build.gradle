@@ -1,0 +1,65 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
+
+def androidID = rootProject.ext.androidId
+def dependence = rootProject.ext.dependenciesID
+
+android {
+    compileSdkVersion androidID.compileSdkVersion
+    buildToolsVersion androidID.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion androidID.minSdkVersion
+        targetSdkVersion androidID.targetSdkVersion
+        versionCode androidID.versionCode
+        versionName androidID.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/gradle/incremental.annotation.processors'
+//        resources.excludes.add("META-INF/*")
+    }
+    buildFeatures {
+        aidl = true
+        viewBinding true
+        dataBinding true
+    }
+}
+
+dependencies {
+
+    dependence.each { k, v -> api v }
+
+    //coroutines: 协程
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.3"
+//coroutines for Android
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.3'
+
+//lifecycle
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.2.0'
+
+    //底部bottomBar
+    implementation 'com.github.ittianyu:BottomNavigationViewEx:2.0.4'
+}

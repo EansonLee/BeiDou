@@ -1,4 +1,4 @@
-package com.module.connect.adadpter
+package com.module.connect.adapter
 
 import android.view.LayoutInflater
 import android.view.View

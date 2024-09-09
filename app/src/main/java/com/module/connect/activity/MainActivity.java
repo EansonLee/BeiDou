@@ -10,7 +10,7 @@ import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.module.connect.R;
-import com.module.connect.adadpter.AddApter;
+import com.module.connect.adapter.AddApter;
 
 import java.util.ArrayList;
 import java.util.List;

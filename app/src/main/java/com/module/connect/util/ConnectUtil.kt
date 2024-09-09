@@ -7,6 +7,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import com.module.connect.bean.BlueToothBean
 import java.io.IOException
 import java.util.UUID
 
@@ -102,50 +103,42 @@ object ConnectUtil {
     }
 
 
-    private fun scanForBluetoothDevices(context: Context) {
+    fun scanForBluetoothDevices(context: Context, onDevicesFound: (List<BlueToothBean>) -> Unit) {
         val bluetoothAdapter: BluetoothAdapter? = BluetoothAdapter.getDefaultAdapter()
 
         if (bluetoothAdapter == null || !bluetoothAdapter.isEnabled) {
             // 蓝牙不可用或未启用
+            onDevicesFound(emptyList())
             return
         }
-
+        val foundDevices = mutableListOf<BlueToothBean>()
         // 创建广播接收器以接收发现的蓝牙设备
         val receiver = object : BroadcastReceiver() {
             override fun onReceive(context: Context?, intent: Intent?) {
                 val action: String? = intent?.action
                 if (BluetoothDevice.ACTION_FOUND == action) {
-                    // 当发现一个设备时，获取设备对象
+                    // 获取发现的蓝牙设备
                     val device: BluetoothDevice? = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE)
                     device?.let {
-                        val deviceName = it.name
-                        val deviceAddress = it.address // 获取设备的 MAC 地址
-                        println("设备名称: $deviceName，设备地址: $deviceAddress")
+                        val deviceInfo = BlueToothBean(name = it.name, address = it.address)
+                        foundDevices.add(deviceInfo)
                     }
+                } else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED == action) {
+                    // 当设备扫描完成时，停止扫描并返回设备列表
+                    context?.unregisterReceiver(this)
+                    bluetoothAdapter.cancelDiscovery()
+                    onDevicesFound(foundDevices)
                 }
             }
         }
 
         // 注册广播接收器
         val filter = IntentFilter(BluetoothDevice.ACTION_FOUND)
+        filter.addAction(BluetoothAdapter.ACTION_DISCOVERY_FINISHED)
         context.registerReceiver(receiver, filter)
 
-        // 开始扫描蓝牙设备
+        // 开始蓝牙设备扫描
         bluetoothAdapter.startDiscovery()
-
-        //停止扫描
-//        bluetoothAdapter.cancelDiscovery()
-    }
-
-    //扫描蓝牙设备
-    fun startBluetoothScan(context: Context) {
-        val bluetoothAdapter: BluetoothAdapter? = BluetoothAdapter.getDefaultAdapter()
-
-        if (bluetoothAdapter != null && bluetoothAdapter.isEnabled) {
-            scanForBluetoothDevices(context)
-        } else {
-            println("蓝牙未启用或设备不支持蓝牙")
-        }
     }
 
     //停止扫描

@@ -1,3 +1,5 @@
 package com.module.connect.bean
 
-data class BlueToothBean(var name: String, var address: String)
+import android.bluetooth.BluetoothDevice
+
+data class BlueToothBean(var name: String?, var address: String, var device: BluetoothDevice)

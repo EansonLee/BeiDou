@@ -1,39 +1,45 @@
 package com.module.connect.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.module.connect.R
 import com.module.connect.bean.BlueToothBean
+import com.module.connect.databinding.ItemBlueToothBinding
 
-class BlueToothAdapter : RecyclerView.Adapter<BlueToothAdapter.BlueTooth>() {
+class BlueToothAdapter(private val onItemClick: (BlueToothBean) -> Unit) :
+    RecyclerView.Adapter<BlueToothAdapter.BlueToothHolder>() {
 
     private val mData: ArrayList<BlueToothBean> = arrayListOf()
 
 
-    inner class BlueTooth(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val tvName = itemView.findViewById<TextView>(R.id.tv_title)
-        val tvAddress = itemView.findViewById<TextView>(R.id.tv_address)
+    inner class BlueToothHolder(private val mBinding: ItemBlueToothBinding) :
+        RecyclerView.ViewHolder(mBinding.root) {
+        fun render(bean: BlueToothBean, onItemClick: (BlueToothBean) -> Unit) {
+            mBinding.tvTitle.text = bean.name
+            mBinding.tvAddress.text = bean.address
+            mBinding.root.setOnClickListener {
+                onItemClick(bean)
+            }
+        }
     }
 
-    override fun onBindViewHolder(holder: BlueTooth, position: Int) {
-        holder.tvName.text = mData[position].name
-        holder.tvAddress.text = mData[position].address
+    override fun onBindViewHolder(holder: BlueToothHolder, position: Int) {
+        holder.render(bean = mData[position], onItemClick)
     }
 
     override fun getItemCount(): Int {
         return mData.size
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BlueTooth {
-        val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_blue_tooth, parent, false)
-        return BlueTooth(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BlueToothHolder {
+        return BlueToothHolder(
+            ItemBlueToothBinding.inflate(
+                LayoutInflater.from(parent.context), parent, false
+            )
+        )
     }
 
-    fun setData(list: MutableList<BlueToothBean>) {
+    fun setData(list: List<BlueToothBean>) {
         mData.clear()
         mData.addAll(list)
         notifyDataSetChanged()

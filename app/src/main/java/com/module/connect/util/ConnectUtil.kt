@@ -2,15 +2,20 @@ package com.module.connect.util
 
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
+import android.bluetooth.BluetoothGatt
+import android.bluetooth.BluetoothGattCallback
 import android.bluetooth.BluetoothSocket
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.text.TextUtils
 import android.util.Log
 import com.blankj.utilcode.util.LogUtils
 import com.module.connect.bean.BlueToothBean
+import com.module.connect.consts.IConsts
 import java.io.IOException
+import java.util.UUID
 
 object ConnectUtil {
     private const val GNSS_UUID: String = "00001101-0000-1000-8000-00805F9B34FB" // 通用串行设备服务 UUID
@@ -20,7 +25,10 @@ object ConnectUtil {
     var CURRENT_BLUE_SOCKET: BluetoothSocket? = null
 
     var CURRENT_DEVICE: BluetoothDevice? = null
-    //查询当前蓝牙是否已连接
+
+    var CURRENT_GATE: BluetoothGatt? = null
+
+    //查询当前蓝牙是否已配对
     fun isBluetoothConnected(): Boolean {
         val bluetoothAdapter: BluetoothAdapter? = BluetoothAdapter.getDefaultAdapter()
         val connectedDevices: Set<BluetoothDevice>? = bluetoothAdapter?.bondedDevices
@@ -34,6 +42,17 @@ object ConnectUtil {
             }
         }
         return false
+    }
+
+    //查询当前蓝牙是否已连接
+    fun isBluetoothLinked(): Boolean {
+        if (CURRENT_BLUE_SOCKET == null) {
+            return false
+        }
+        if (CURRENT_BLUE_SOCKET!!.isConnected.not()) {
+            return false
+        }
+        return true
     }
 
     //连接蓝牙设备
@@ -189,8 +208,6 @@ object ConnectUtil {
                             if (state == BluetoothDevice.BOND_BONDED) {
                                 Log.d("BluetoothPair", "设备配对成功: ${device.name}")
                                 // 可以在此继续执行连接等其他操作
-                                CURRENT_BLUE_SOCKET =  connectBluetoothDevice(device)
-
                             } else if (state == BluetoothDevice.BOND_NONE) {
                                 Log.d("BluetoothPair", "设备配对失败: ${device.name}")
                             }
@@ -212,14 +229,37 @@ object ConnectUtil {
     fun connectBluetoothDevice(device: BluetoothDevice): BluetoothSocket? {
         var bluetoothSocket: BluetoothSocket? = null
         try {
-            // 确保设备已配对
             if (device.bondState == BluetoothDevice.BOND_BONDED) {
-                val uuid = device.uuids[0].uuid  // 获取设备的UUID
-                bluetoothSocket = device.createRfcommSocketToServiceRecord(uuid)
+                val sppUuid: UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB")
 
-                // 取消蓝牙适配器的设备扫描，避免影响连接速度
-                val bluetoothAdapter = device.bluetoothClass
-                bluetoothSocket.connect()
+                // 取消蓝牙扫描
+                val bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
+                bluetoothAdapter.cancelDiscovery()
+
+                try {
+                    // 尝试标准方法连接
+                    bluetoothSocket = device.createRfcommSocketToServiceRecord(sppUuid)
+                    bluetoothSocket.connect()
+                } catch (e: IOException) {
+                    Log.e("BluetoothConnect", "标准方法连接失败，尝试反射连接")
+                    e.printStackTrace()
+
+                    try {
+                        // 使用反射方式连接
+                        val method = device.javaClass.getMethod("createRfcommSocket", Int::class.javaPrimitiveType)
+                        bluetoothSocket = method.invoke(device, 1) as BluetoothSocket
+                        bluetoothSocket.connect()
+                    } catch (e: Exception) {
+                        Log.e("BluetoothConnect", "反射方法连接失败")
+                        e.printStackTrace()
+                        try {
+                            bluetoothSocket?.close()
+                        } catch (closeException: IOException) {
+                            closeException.printStackTrace()
+                        }
+                        return null
+                    }
+                }
                 Log.d("BluetoothConnect", "设备连接成功: ${device.name}")
             } else {
                 Log.d("BluetoothConnect", "设备未配对，无法连接")
@@ -236,17 +276,67 @@ object ConnectUtil {
         return bluetoothSocket
     }
 
-    fun unpairBluetoothDevice(device: BluetoothDevice): Boolean {
+
+    fun unpairBluetoothDevice(device: BluetoothDevice?): Boolean {
+        val localDevice: BluetoothDevice? = if (device == null) {
+            val address = KeyValueUtils.getString(IConsts.KEY_CURRENT_ADDRESS)
+            val bluetoothAdapter: BluetoothAdapter? = BluetoothAdapter.getDefaultAdapter()
+            bluetoothAdapter?.getRemoteDevice(address)
+        } else {
+            device
+        }
         return try {
             // 使用反射获取 removeBond 方法
-            val method = device.javaClass.getMethod("removeBond")
-            method.invoke(device)
-            Log.d("BluetoothUnpair", "设备解除配对请求已发送: ${device.name}")
+            val method = localDevice?.javaClass?.getMethod("removeBond")
+            method?.invoke(localDevice)
+            Log.d("BluetoothUnpair", "设备解除配对请求已发送: ${localDevice?.name}")
             true
         } catch (e: Exception) {
             e.printStackTrace()
             Log.e("BluetoothUnpair", "解除配对时发生错误: ${e.message}")
             false
         }
+    }
+
+    fun getCurrentSocket(): BluetoothSocket? {
+        val bluetoothSocket: BluetoothSocket?
+        val address = KeyValueUtils.getString(IConsts.KEY_CURRENT_ADDRESS)
+        if (TextUtils.isEmpty(address)) {
+            return null
+        }
+        val bluetoothAdapter: BluetoothAdapter? = BluetoothAdapter.getDefaultAdapter()
+        val device = bluetoothAdapter?.getRemoteDevice(address)
+        CURRENT_DEVICE = device
+        return if (device == null) {
+            null
+        } else {
+            val sppUuid: UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB")
+            bluetoothSocket = device.createRfcommSocketToServiceRecord(sppUuid)
+            CURRENT_BLUE_SOCKET = bluetoothSocket
+            bluetoothSocket
+        }
+    }
+
+    fun getCurrentDevice(): BluetoothDevice? {
+        val address = KeyValueUtils.getString(IConsts.KEY_CURRENT_ADDRESS)
+        if (TextUtils.isEmpty(address)) {
+            return null
+        }
+        val bluetoothAdapter: BluetoothAdapter? = BluetoothAdapter.getDefaultAdapter()
+        return bluetoothAdapter?.getRemoteDevice(address)
+    }
+
+    private var bluetoothGatt: BluetoothGatt? = null
+    fun connectBLEDevice(context: Context, device: BluetoothDevice, callback: BluetoothGattCallback): BluetoothGatt? {
+        if (bluetoothGatt != null) {
+            // Already connected
+            bluetoothGatt?.disconnect()
+        }
+
+        // Establish a connection to the BLE device
+        bluetoothGatt = device.connectGatt(context, false, callback)
+        CURRENT_GATE = bluetoothGatt
+        Log.d("BLEConnectionManager", "开始连接设备: ${device.name}")
+        return bluetoothGatt
     }
 }

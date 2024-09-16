@@ -9,6 +9,8 @@ import androidx.annotation.Nullable;
 import androidx.multidex.MultiDex;
 import androidx.multidex.MultiDexApplication;
 
+import com.tencent.mmkv.MMKV;
+
 
 public class BaseApplication extends MultiDexApplication {
 
@@ -16,18 +18,13 @@ public class BaseApplication extends MultiDexApplication {
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
         MultiDex.install(this);
-
+        MMKV.initialize(base);
     }
 
     @Override
     public void onCreate() {
         super.onCreate();
-
-
-//        CrashTest.init(this);
-
         registerLifeCycle();
-
     }
 
     private void registerLifeCycle() {

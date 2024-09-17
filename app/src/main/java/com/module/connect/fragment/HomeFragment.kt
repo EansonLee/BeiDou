@@ -1,6 +1,8 @@
 package com.module.connect.fragment
 
+import BluetoothHelper
 import android.app.ProgressDialog
+import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothGatt
 import android.bluetooth.BluetoothGattCallback
 import android.bluetooth.BluetoothGattCharacteristic
@@ -14,6 +16,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import com.blankj.utilcode.util.ToastUtils
+import com.module.connect.bean.BlueToothBean
 import com.module.connect.consts.IConsts
 import com.module.connect.databinding.FragmentHomeBinding
 import com.module.connect.dialog.BlueToothListDialog
@@ -31,7 +35,10 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
-    private var scanningProgressDialog: ProgressDialog? = null
+    companion object {
+        val deviceList = mutableListOf<BluetoothDevice>()
+        val devices = mutableListOf<BlueToothBean>()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -50,21 +57,25 @@ class HomeFragment : Fragment() {
     }
 
     private fun initView() {
+        BluetoothHelper.init(requireContext())
+
         binding.ll1.setOnClickListener {
             val uuid = KeyValueUtils.getString(IConsts.KEY_CURRENT_WRITE_UUID)
             val char = KeyValueUtils.getString(IConsts.KEY_CURRENT_WRITE_CHARACTERISTICS)
 //            val uuid = "00112233-4455-6677-8899-aabbccddeeff"
 //            val char = "00112433-4455-6677-8899-aabbccddeeff"
 
-//            CommandUtil.sendCommandWithResponse(ConnectUtil.CURRENT_GATE!!, uuid, char, "AT+VERSION=?")
+//            CommandUtil.sendCommandWithResponse(ConnectUtil.CURRENT_GATE!!, uuid, char, "AT+VERSION=?\n")
 //
+            Log.e("---", "uuid：$uuid")
+            Log.e("---", "char：$char")
             BluetoothLEUtil.sendCommandWithNotification(
-                ConnectUtil.CURRENT_GATE!!,
+                BluetoothHelper.getCurrentGate()!!,
                 uuid,
                 char,
-                "AT+VERSION=?"
+                "AT+VERSION=?\r\n"
             )
-            CommandUtil.readResponse(ConnectUtil.CURRENT_GATE!!, uuid, char) {
+            CommandUtil.readResponse(BluetoothHelper.getCurrentGate()!!, uuid, char) {
                 Log.e("---", "resp：$it")
             }
         }
@@ -76,7 +87,7 @@ class HomeFragment : Fragment() {
 //            }
             val uuid = KeyValueUtils.getString(IConsts.KEY_CURRENT_WRITE_UUID)
             val char = KeyValueUtils.getString(IConsts.KEY_CURRENT_WRITE_CHARACTERISTICS)
-            CommandUtil.sendCommand(ConnectUtil.CURRENT_GATE!!, uuid, char, "AT+REBOOT")
+            CommandUtil.sendCommand(ConnectUtil.CURRENT_GATE!!, uuid, char, "AT+REBOOT\r")
         }
 
         binding.ll3.setOnClickListener {
@@ -173,21 +184,24 @@ class HomeFragment : Fragment() {
                 requireActivity(),
                 object : PermissionComplianceManager.SimpleCallbackProxy() {
                     override fun onGranted() {
-                        scanningProgressDialog = ProgressDialog(requireContext()).apply {
-                            setMessage("扫描中...")
-                            setCancelable(false)
-                            show()
-                        }
-                        ConnectUtil.scanForBluetoothDevices(requireContext()) { devices ->
-                            scanningProgressDialog?.dismiss()
-                            BlueToothListDialog.newInstance(childFragmentManager, devices)
-                        }
+                        BlueToothListDialog.newInstance(childFragmentManager, devices)
+                        BluetoothHelper.startScan({ device ->
+                            if (!deviceList.contains(device)) {
+                                deviceList.add(device)
+                                val deviceInfo = BlueToothBean(name = device.name, address = device.address, device)
+//                                devices.add(deviceInfo)
+                                BlueToothListDialog.notify(deviceInfo)
+                            }
+                        }, { errorCode ->
+                            ToastUtils.showShort("扫描失败")
+                        })
                     }
                 })
         }
 
         binding.tvDisconnect.setOnClickListener {
-            ConnectUtil.unpairBluetoothDevice(ConnectUtil.CURRENT_DEVICE)
+//            ConnectUtil.unpairBluetoothDevice(ConnectUtil.CURRENT_DEVICE)
+            BluetoothHelper.disconnect()
         }
         binding.tvLink.setOnClickListener {
 /*            ConnectUtil.connectBLEDevice(requireContext(), ConnectUtil.getCurrentDevice()!!,object : BluetoothGattCallback() {
@@ -256,20 +270,21 @@ class HomeFragment : Fragment() {
 
 
     private fun refreshPageBlueToothState() {
-        if (ConnectUtil.isBluetoothConnected()) {
-            binding.tvStatus.text = "蓝牙已配对"
+        if (BluetoothHelper.isAnyDeviceConnected(requireContext())) {
+            binding.tvStatus.text = "蓝牙已连接"
             binding.tvConnect.visibility = View.GONE
             binding.tvDisconnect.visibility = View.VISIBLE
-            ConnectUtil.getCurrentSocket()
-            if (ConnectUtil.isBluetoothLinked()) {
-                binding.tvLink.visibility = View.GONE
-            } else {
-                binding.tvLink.visibility = View.VISIBLE
-            }
+//            ConnectUtil.getCurrentSocket()
+//            if (bluetoothHelper.isAnyDeviceConnected(requireContext())) {
+//                binding.tvLink.visibility = View.GONE
+//            } else {
+//                binding.tvLink.visibility = View.VISIBLE
+//            }
         } else {
-            binding.tvStatus.text = "蓝牙未配对"
+            binding.tvStatus.text = "蓝牙未连接"
             binding.tvConnect.visibility = View.VISIBLE
             binding.tvDisconnect.visibility = View.GONE
+            binding.tvLink.visibility = View.GONE
         }
     }
 
@@ -277,5 +292,6 @@ class HomeFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        BluetoothHelper.disconnect()
     }
 }

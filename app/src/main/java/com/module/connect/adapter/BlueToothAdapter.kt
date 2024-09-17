@@ -44,4 +44,9 @@ class BlueToothAdapter(private val onItemClick: (BlueToothBean) -> Unit) :
         mData.addAll(list)
         notifyDataSetChanged()
     }
+
+    fun setData(device : BlueToothBean) {
+        mData.add(device)
+        notifyDataSetChanged()
+    }
 }

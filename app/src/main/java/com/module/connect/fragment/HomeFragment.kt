@@ -1,6 +1,7 @@
 package com.module.connect.fragment
 
 import BluetoothHelper
+import android.annotation.SuppressLint
 import android.app.ProgressDialog
 import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothGatt
@@ -13,6 +14,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -57,27 +59,36 @@ class HomeFragment : Fragment() {
     }
 
     private fun initView() {
-        BluetoothHelper.init(requireContext())
+        PermissionComplianceManager.requestBlueToothPermissionHasTip(requireActivity(), object :
+            PermissionComplianceManager.SimpleCallbackProxy() {
+
+            override fun onGranted() {
+                super.onGranted()
+                BluetoothHelper.init(requireContext())
+            }
+
+            override fun onDenied() {
+                super.onDenied()
+                Toast.makeText(context,"请授予蓝牙权限", Toast.LENGTH_SHORT).show()
+                requireActivity().finish()
+            }
+        })
 
         binding.ll1.setOnClickListener {
             val uuid = KeyValueUtils.getString(IConsts.KEY_CURRENT_WRITE_UUID)
             val char = KeyValueUtils.getString(IConsts.KEY_CURRENT_WRITE_CHARACTERISTICS)
-//            val uuid = "00112233-4455-6677-8899-aabbccddeeff"
-//            val char = "00112433-4455-6677-8899-aabbccddeeff"
-
-//            CommandUtil.sendCommandWithResponse(ConnectUtil.CURRENT_GATE!!, uuid, char, "AT+VERSION=?\n")
-//
             Log.e("---", "uuid：$uuid")
             Log.e("---", "char：$char")
-            BluetoothLEUtil.sendCommandWithNotification(
-                BluetoothHelper.getCurrentGate()!!,
-                uuid,
-                char,
-                "AT+VERSION=?\r\n"
-            )
-            CommandUtil.readResponse(BluetoothHelper.getCurrentGate()!!, uuid, char) {
-                Log.e("---", "resp：$it")
-            }
+            BluetoothHelper.sendCommandAndWaitForResponse("AT+VERSION=?\r\n")
+//            BluetoothLEUtil.sendCommandWithNotification(
+//                BluetoothHelper.getCurrentGate()!!,
+//                uuid,
+//                char,
+//                "AT+VERSION=?\r\n"
+//            )
+//            CommandUtil.readResponse(BluetoothHelper.getCurrentGate()!!, uuid, char) {
+//                Log.e("---", "resp：$it")
+//            }
         }
 
         binding.ll2.setOnClickListener {
@@ -183,17 +194,18 @@ class HomeFragment : Fragment() {
             PermissionComplianceManager.requestFineLocationPermissionHasTip(
                 requireActivity(),
                 object : PermissionComplianceManager.SimpleCallbackProxy() {
+                    @SuppressLint("MissingPermission")
                     override fun onGranted() {
                         BlueToothListDialog.newInstance(childFragmentManager, devices)
                         BluetoothHelper.startScan({ device ->
-                            if (!deviceList.contains(device)) {
+                            if (!deviceList.contains(device) && !TextUtils.isEmpty(device.name)) {
                                 deviceList.add(device)
                                 val deviceInfo = BlueToothBean(name = device.name, address = device.address, device)
 //                                devices.add(deviceInfo)
                                 BlueToothListDialog.notify(deviceInfo)
                             }
                         }, { errorCode ->
-                            ToastUtils.showShort("扫描失败")
+                            Toast.makeText(context,"扫描失败", Toast.LENGTH_SHORT).show()
                         })
                     }
                 })

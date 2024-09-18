@@ -22,6 +22,12 @@ object PermissionComplianceManager {
         Manifest.permission.ACCESS_FINE_LOCATION
     )
 
+    val PERMISSION_BLUETOOTH = arrayOf(
+        Manifest.permission.BLUETOOTH_SCAN,
+        Manifest.permission.BLUETOOTH_CONNECT,
+        Manifest.permission.BLUETOOTH_ADVERTISE
+    )
+
     fun requestStoragePermission(
         context: Context,
         callback: SimpleCallbackProxy
@@ -58,6 +64,20 @@ object PermissionComplianceManager {
             callback.onGranted()
         } else {
             PermissionUtils.permission(*PERMISSION_FINE_LOCATION)
+                .callback(callback)
+                .request()
+
+        }
+    }
+
+    fun requestBlueToothPermissionHasTip(
+        context: FragmentActivity,
+        callback: SimpleCallbackProxy
+    ) {
+        if (allPermissionsGranted(context, PERMISSION_BLUETOOTH)) {
+            callback.onGranted()
+        } else {
+            PermissionUtils.permission(*PERMISSION_BLUETOOTH)
                 .callback(callback)
                 .request()
 

@@ -3,7 +3,10 @@ package com.module.connect.util
 import android.bluetooth.BluetoothGatt
 import android.bluetooth.BluetoothSocket
 import android.util.Log
+import android.widget.Toast
+import com.blankj.utilcode.util.AppUtils
 import com.blankj.utilcode.util.ToastUtils
+import com.blankj.utilcode.util.Utils
 import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
@@ -13,7 +16,7 @@ object CommandUtil {
     //发送AT+VERSION=?指令
     fun sendVersionCommand(bluetoothSocket: BluetoothSocket): String? {
         if (ConnectUtil.isBluetoothConnected().not()) {
-            ToastUtils.showShort("当前设备未连接")
+            Toast.makeText(Utils.getApp(),"当前设备未连接", Toast.LENGTH_SHORT).show()
             return null
         }
 

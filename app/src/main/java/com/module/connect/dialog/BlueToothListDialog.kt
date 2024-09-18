@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.blankj.utilcode.util.ToastUtils
@@ -60,13 +61,13 @@ class BlueToothListDialog : BaseFragmentDialog<DialogBlueToothListBinding>() {
 //            ConnectUtil.CURRENT_BLUE_SOCKET = ConnectUtil.connectToGnssDevice(it.address)
 //            ConnectUtil.pairBluetoothDevice(requireContext(), it.device)
             if (BluetoothHelper.isDevicePaired(it.device)) {
-                ToastUtils.showShort("此设备已配对")
+                Toast.makeText(context,"此设备已配对", Toast.LENGTH_SHORT).show()
             } else {
                 BluetoothHelper.connectDevice(requireContext(), it.device, {
-                    ToastUtils.showShort("连接成功")
+                    Toast.makeText(context,"连接成功", Toast.LENGTH_SHORT).show()
                     Log.e("---", "已连接")
                 }, {
-                    ToastUtils.showShort("连接失败")
+                    Toast.makeText(context,"连接失败", Toast.LENGTH_SHORT).show()
                     Log.e("---", "连接失败")
                 })
             }

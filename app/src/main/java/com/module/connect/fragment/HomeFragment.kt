@@ -79,13 +79,13 @@ class HomeFragment : Fragment() {
             val char = KeyValueUtils.getString(IConsts.KEY_CURRENT_WRITE_CHARACTERISTICS)
             Log.e("---", "uuid：$uuid")
             Log.e("---", "char：$char")
-            BluetoothHelper.sendCommandAndWaitForResponse("AT+VERSION=?\r\n")
-//            BluetoothLEUtil.sendCommandWithNotification(
-//                BluetoothHelper.getCurrentGate()!!,
-//                uuid,
-//                char,
-//                "AT+VERSION=?\r\n"
-//            )
+//            BluetoothHelper.sendCommandAndWaitForResponse("AT+VERSION=?")
+            BluetoothLEUtil.sendCommandWithNotification(
+                BluetoothHelper.getCurrentGate()!!,
+                uuid,
+                char,
+                "AT+VERSION=?"
+            )
 //            CommandUtil.readResponse(BluetoothHelper.getCurrentGate()!!, uuid, char) {
 //                Log.e("---", "resp：$it")
 //            }

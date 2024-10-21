@@ -1,8 +1,11 @@
 package com.module.connect.util
 
+import android.Manifest
 import android.bluetooth.*
 import android.content.Context
+import android.content.pm.PackageManager
 import android.util.Log
+import androidx.core.app.ActivityCompat
 import com.module.connect.consts.IConsts
 import java.util.*
 

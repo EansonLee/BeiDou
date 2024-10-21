@@ -106,26 +106,29 @@ object BluetoothHelper {
                             val characteristics = service.characteristics
                             for (characteristic in characteristics) {
                                 val characteristicUUID = characteristic.uuid
-//                                if (characteristic.properties and BluetoothGattCharacteristic.PROPERTY_NOTIFY != 0) {
-                                Log.d("BluetoothGatt", "特性支持通知: $characteristicUUID")
-                                    val uuid =
-                                        KeyValueUtils.getString(IConsts.KEY_CURRENT_WRITE_UUID)
-                                    val char =
-                                        KeyValueUtils.getString(IConsts.KEY_CURRENT_WRITE_CHARACTERISTICS)
-                                    if (!TextUtils.isEmpty(uuid) && !TextUtils.isEmpty(char)) {
-                                        return
-                                    }
-                                KeyValueUtils.setString(
-                                    IConsts.KEY_CURRENT_WRITE_CHARACTERISTICS,
-                                    characteristicUUID.toString()
-                                )
-                                KeyValueUtils.setString(
-                                    IConsts.KEY_CURRENT_WRITE_UUID,
-                                    service.uuid.toString()
-                                )
+                                if (characteristic.properties and BluetoothGattCharacteristic.PROPERTY_NOTIFY != 0) {
+                                    Log.d("BluetoothGatt", "特性支持通知: $characteristicUUID")
+                                    KeyValueUtils.setString(
+                                        IConsts.KEY_CURRENT_NOTIFY_CHARACTERISTICS,
+                                        characteristicUUID.toString()
+                                    )
+                                    KeyValueUtils.setString(
+                                        IConsts.KEY_CURRENT_NOTIFY_UUID,
+                                        service.uuid.toString()
+                                    )
+                                } else {
+                                    Log.d("BluetoothGatt", "特性支持读取: $characteristicUUID")
+                                    KeyValueUtils.setString(
+                                        IConsts.KEY_CURRENT_WRITE_CHARACTERISTICS,
+                                        characteristicUUID.toString()
+                                    )
+                                    KeyValueUtils.setString(
+                                        IConsts.KEY_CURRENT_WRITE_UUID,
+                                        service.uuid.toString()
+                                    )
+                                }
                             }
                         }
-//                        }
                     }
                 } else {
                     Log.e(TAG, "服务发现失败，状态码: $status")

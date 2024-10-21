@@ -3,20 +3,20 @@ package com.module.connect.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.module.connect.bean.BlueToothBean
+import cn.com.heaton.blelibrary.ble.model.BleDevice
 import com.module.connect.databinding.ItemBlueToothBinding
 
-class BlueToothAdapter(private val onItemClick: (BlueToothBean) -> Unit) :
+class BlueToothAdapter(private val onItemClick: (BleDevice) -> Unit) :
     RecyclerView.Adapter<BlueToothAdapter.BlueToothHolder>() {
 
-    private val mData: ArrayList<BlueToothBean> = arrayListOf()
+    private val mData: ArrayList<BleDevice> = arrayListOf()
 
 
     inner class BlueToothHolder(private val mBinding: ItemBlueToothBinding) :
         RecyclerView.ViewHolder(mBinding.root) {
-        fun render(bean: BlueToothBean, onItemClick: (BlueToothBean) -> Unit) {
-            mBinding.tvTitle.text = bean.name
-            mBinding.tvAddress.text = bean.address
+        fun render(bean: BleDevice, onItemClick: (BleDevice) -> Unit) {
+            mBinding.tvTitle.text = bean.bleName
+            mBinding.tvAddress.text = bean.bleAddress
             mBinding.root.setOnClickListener {
                 onItemClick(bean)
             }
@@ -39,13 +39,13 @@ class BlueToothAdapter(private val onItemClick: (BlueToothBean) -> Unit) :
         )
     }
 
-    fun setData(list: List<BlueToothBean>) {
+    fun setData(list: List<BleDevice>) {
         mData.clear()
         mData.addAll(list)
         notifyDataSetChanged()
     }
 
-    fun setData(device : BlueToothBean) {
+    fun setData(device: BleDevice) {
         mData.add(device)
         notifyDataSetChanged()
     }

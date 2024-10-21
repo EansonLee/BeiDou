@@ -18,6 +18,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import cn.com.heaton.blelibrary.ble.Ble
+import cn.com.heaton.blelibrary.ble.callback.BleScanCallback
+import cn.com.heaton.blelibrary.ble.model.BleDevice
 import com.blankj.utilcode.util.ToastUtils
 import com.module.connect.bean.BlueToothBean
 import com.module.connect.consts.IConsts
@@ -38,8 +41,8 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
 
     companion object {
-        val deviceList = mutableListOf<BluetoothDevice>()
-        val devices = mutableListOf<BlueToothBean>()
+        val deviceList = mutableListOf<BleDevice>()
+        val devices = mutableListOf<BleDevice>()
     }
 
     override fun onCreateView(
@@ -197,75 +200,21 @@ class HomeFragment : Fragment() {
                     @SuppressLint("MissingPermission")
                     override fun onGranted() {
                         BlueToothListDialog.newInstance(childFragmentManager, devices)
-                        BluetoothHelper.startScan({ device ->
-                            if (!deviceList.contains(device) && !TextUtils.isEmpty(device.name)) {
-                                deviceList.add(device)
-                                val deviceInfo = BlueToothBean(name = device.name, address = device.address, device)
-//                                devices.add(deviceInfo)
-                                BlueToothListDialog.notify(deviceInfo)
+                        Ble.getInstance<BleDevice>().startScan(object :
+                            BleScanCallback<BleDevice>() {
+                            override fun onLeScan(device: BleDevice, rssi: Int, scanRecord: ByteArray?) {
+                                if (!deviceList.contains(device) && !TextUtils.isEmpty(device.bleName)) {
+                                    deviceList.add(device)
+                                    BlueToothListDialog.notify(device)
+                                }
                             }
-                        }, { errorCode ->
-                            Toast.makeText(context,"扫描失败", Toast.LENGTH_SHORT).show()
                         })
                     }
                 })
         }
 
         binding.tvDisconnect.setOnClickListener {
-//            ConnectUtil.unpairBluetoothDevice(ConnectUtil.CURRENT_DEVICE)
             BluetoothHelper.disconnect()
-        }
-        binding.tvLink.setOnClickListener {
-/*            ConnectUtil.connectBLEDevice(requireContext(), ConnectUtil.getCurrentDevice()!!,object : BluetoothGattCallback() {
-                override fun onConnectionStateChange(gatt: BluetoothGatt, status: Int, newState: Int) {
-                    when (newState) {
-                        BluetoothProfile.STATE_CONNECTED -> {
-                            Log.d("BLEConnection", "设备已连接")
-                            gatt.discoverServices()  // 开始发现服务
-                            binding.tvLink.visibility = View.GONE
-                        }
-                        BluetoothProfile.STATE_DISCONNECTED -> {
-                            Log.d("BLEConnection", "设备已断开连接")
-                        }
-                    }
-                }
-
-                override fun onServicesDiscovered(gatt: BluetoothGatt, status: Int) {
-                    if (status == BluetoothGatt.GATT_SUCCESS) {
-                        Log.d("BLEConnection", "服务发现成功")
-                        val services = gatt.services
-                        for (service in services) {
-                            Log.d("BluetoothGatt", "发现服务: ${service.uuid}")
-                            KeyValueUtils.setString(IConsts.KEY_CURRENT_WRITE_UUID, service.uuid.toString())
-                            // 获取服务中的所有特性
-                            val characteristics = service.characteristics
-                            for (characteristic in characteristics) {
-                                val characteristicUUID = characteristic.uuid
-                                Log.d("BluetoothGatt", "发现特性: $characteristicUUID")
-                                KeyValueUtils.setString(IConsts.KEY_CURRENT_WRITE_CHARACTERISTICS, characteristicUUID.toString())
-
-
-                                // 检查该特性是否支持写入
-                                if (characteristic.properties and BluetoothGattCharacteristic.PROPERTY_WRITE != 0) {
-                                    Log.d("BluetoothGatt", "特性支持写入: $characteristicUUID")
-                                }
-
-                                // 检查该特性是否支持读取
-                                if (characteristic.properties and BluetoothGattCharacteristic.PROPERTY_READ != 0) {
-                                    Log.d("BluetoothGatt", "特性支持读取: $characteristicUUID")
-                                }
-                            }
-                        }
-                    } else {
-                        Log.d("BLEConnection", "服务发现失败: $status")
-                    }
-                }
-            })*/
-            ConnectUtil.CURRENT_GATE = BluetoothLEUtil.connectToDevice(
-                requireContext(),
-                ConnectUtil.getCurrentDevice()!!,
-                BluetoothLEUtil.gattCallback
-            )
         }
     }
 

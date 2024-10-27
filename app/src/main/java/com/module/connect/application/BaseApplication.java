@@ -3,6 +3,7 @@ package com.module.connect.application;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -45,10 +46,10 @@ public class BaseApplication extends MultiDexApplication {
                 .setMaxConnectNum(7)//最大连接数量
                 .setScanPeriod(12 * 1000)//设置扫描时长（默认10*1000 ms）
 //                .setScanFilter(scanFilter)//设置扫描过滤
-                .setUuidService(UUID.fromString(UuidUtils.uuid16To128("fd00")))//设置主服务的uuid（必填）
-                .setUuidWriteCha(UUID.fromString(UuidUtils.uuid16To128("fd01")))//设置可写特征的uuid （必填,否则写入失败）
-                .setUuidReadCha(UUID.fromString(UuidUtils.uuid16To128("fd02")))//设置可读特征的uuid （选填）
-                .setUuidNotifyCha(UUID.fromString(UuidUtils.uuid16To128("fd03")))//设置可通知特征的uuid （选填，库中默认已匹配可通知特征的uuid）
+                .setUuidService(UUID.fromString("55e405d2-af9f-a98f-e54a-7dfe43535355"))//设置主服务的uuid（必填）
+                .setUuidWriteCha(UUID.fromString("16962447-c623-61ba-d94b-4d1e43535349"))//设置可写特征的uuid （必填,否则写入失败）
+//                .setUuidReadCha(UUID.fromString(UuidUtils.uuid16To128("fd02")))//设置可读特征的uuid （选填）
+//                .setUuidNotifyCha(UUID.fromString(UuidUtils.uuid16To128("fd03")))//设置可通知特征的uuid （选填，库中默认已匹配可通知特征的uuid）
 //                .setUuidServicesExtra(new UUID[]{BATTERY_SERVICE_UUID})//设置额外的其他服务组，如电量服务等
 //                .setFactory(new BleFactory() {//实现自定义BleDevice时必须设置
 //                    @Override
@@ -60,12 +61,12 @@ public class BaseApplication extends MultiDexApplication {
                 .create(this, new Ble.InitCallback() {
                     @Override
                     public void success() {
-                        BleLog.e("MainApplication", "初始化成功");
+                        Log.e("MainApplication", "初始化成功");
                     }
 
                     @Override
                     public void failed(int failedCode) {
-                        BleLog.e("MainApplication", "初始化失败：" + failedCode);
+                        Log.e("MainApplication", "初始化失败：" + failedCode);
                     }
                 });
     }

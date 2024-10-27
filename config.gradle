@@ -9,7 +9,7 @@ ext {
     ]
 
     androidId = [
-            "compileSdkVersion": 31,
+            "compileSdkVersion": 33,
             "buildToolsVersion": "30.0.3",
             "minSdkVersion"    : 21,
             "targetSdkVersion" : 30,

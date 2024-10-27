@@ -3,22 +3,26 @@ package com.module.connect.dialog
 import android.bluetooth.BluetoothGatt
 import android.bluetooth.BluetoothGattCharacteristic
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import cn.com.heaton.blelibrary.ble.Ble
-import cn.com.heaton.blelibrary.ble.BleLog
 import cn.com.heaton.blelibrary.ble.callback.BleConnectCallback
 import cn.com.heaton.blelibrary.ble.callback.BleNotifyCallback
 import cn.com.heaton.blelibrary.ble.model.BleDevice
-import cn.com.heaton.blelibrary.ble.utils.ByteUtils
+import com.blankj.utilcode.util.Utils
 import com.module.connect.adapter.BlueToothAdapter
+import com.module.connect.consts.IConsts
 import com.module.connect.databinding.DialogBlueToothListBinding
 import com.module.connect.ext.makeArguments
 import com.module.connect.ext.params
 import com.module.connect.fragment.HomeFragment
+import com.module.connect.util.BLEUtils
+import com.module.connect.util.KeyValueUtils
+import com.module.connect.util.LiveDataBus
 
 
 class BlueToothListDialog : BaseFragmentDialog<DialogBlueToothListBinding>() {
@@ -55,67 +59,66 @@ class BlueToothListDialog : BaseFragmentDialog<DialogBlueToothListBinding>() {
 
     override fun initView(savedInstanceState: Bundle?) {
         mBluetoothAdapter = BlueToothAdapter {
-//            connectingProgressDialog = ProgressDialog(requireContext()).apply {
-//                setMessage("连接中...")
-//                setCancelable(false)
-//                show()
-//            }
-//            ConnectUtil.CURRENT_ADDRESS = it.address
-//            ConnectUtil.CURRENT_DEVICE = it.device
-//            KeyValueUtils.setString(IConsts.KEY_CURRENT_ADDRESS, it.address)
-//            ConnectUtil.CURRENT_BLUE_SOCKET = ConnectUtil.connectToGnssDevice(it.address)
-//            ConnectUtil.pairBluetoothDevice(requireContext(), it.device)
-//            if (BluetoothHelper.isDevicePaired(it.device)) {
-//                Toast.makeText(context,"此设备已配对", Toast.LENGTH_SHORT).show()
-//            } else {
-//                BluetoothHelper.connectDevice(requireContext(), it.device, {
-//                    Toast.makeText(context,"连接成功", Toast.LENGTH_SHORT).show()
-//                    Log.e("---", "已连接")
-//                }, {
-//                    Toast.makeText(context,"连接失败", Toast.LENGTH_SHORT).show()
-//                    Log.e("---", "连接失败")
-//                })
-//            }
             Ble.getInstance<BleDevice>().connect(it, object : BleConnectCallback<BleDevice>() {
-                override fun onConnectionChanged(device: BleDevice?) {
-                    Toast.makeText(requireContext(), "蓝牙已连接", Toast.LENGTH_SHORT).show()
+                override fun onConnectionChanged(device: BleDevice) {
+                    Log.e("------", device.toString())
+                    if (device.isConnected) {
+                        BLEUtils.isConnected = true
+                        BLEUtils.bleName = device.bleName
+                        BLEUtils.bleAddress = device.bleAddress
+                        KeyValueUtils.setString(IConsts.KEY_CURRENT_ADDRESS, device.bleAddress)
+                        KeyValueUtils.setString(IConsts.KEY_CURRENT_DEVICE, device.bleName)
+                        Toast.makeText(Utils.getApp(), "蓝牙已连接", Toast.LENGTH_SHORT).show()
+                    }
                 }
 
                 override fun onReady(device: BleDevice) {
                     super.onReady(device)
-                    Ble.getInstance<BleDevice>().enableNotify(device, true, object : BleNotifyCallback<BleDevice>(){
-                        override fun onChanged(
-                            device: BleDevice?,
-                            characteristic: BluetoothGattCharacteristic
-                        ) {
-                            val uuid = characteristic.uuid
-                            BleLog.e("-------", "onChanged==uuid:$uuid")
-                            BleLog.e(
-                                "-------",
-                                "onChanged==data:" + ByteUtils.toHexString(characteristic.value)
-                            )
-                        }
+                    BLEUtils.CURRENT_DEVICE = device
+                    Ble.getInstance<BleDevice>()
+                        .enableNotify(device, true, object : BleNotifyCallback<BleDevice>() {
+                            override fun onChanged(
+                                device: BleDevice?,
+                                characteristic: BluetoothGattCharacteristic
+                            ) {
+                                val uuid = characteristic.uuid
+                                val res = BLEUtils.byteArrayToAsciiString(characteristic.value)
+                                Log.e("-------", "onChanged==uuid:$uuid")
+                                Log.e("-------", "onChanged==data:$res")
+                                LiveDataBus.postString(IConsts.KEY_COMMEND_RES, res)
+                            }
 
-                        override fun onNotifySuccess(device: BleDevice) {
-                            super.onNotifySuccess(device)
-                            BleLog.e("-------", "onNotifySuccess: "+ device.bleName)
-                        }
-                    })
+                            override fun onNotifySuccess(device: BleDevice) {
+                                super.onNotifySuccess(device)
+                                Log.e("-------", "onNotifySuccess: " + device.bleName)
+                            }
+                        })
                 }
 
-                override fun onServicesDiscovered(device: BleDevice?, gatt: BluetoothGatt?) {
+                override fun onServicesDiscovered(device: BleDevice, gatt: BluetoothGatt) {
                     super.onServicesDiscovered(device, gatt)
-                    Toast.makeText(requireContext(), "发现服务", Toast.LENGTH_SHORT).show()
+                    Log.e("------", "发现服务")
+                    val services = gatt.services
+                    for (service in services) {
+                        val serviceUUID = service.uuid
+                        Log.d("BLE", "Service UUID: $serviceUUID")
+
+                        // 获取并打印该服务的所有特征 UUID
+                        for (characteristic in service.characteristics) {
+                            val characteristicUUID = characteristic.uuid
+                            Log.d("BLE", "Characteristic UUID: $characteristicUUID")
+                        }
+                    }
                 }
 
                 override fun onConnectCancel(device: BleDevice?) {
                     super.onConnectCancel(device)
-                    Toast.makeText(requireContext(), "取消连接", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(Utils.getApp(), "取消连接", Toast.LENGTH_SHORT).show()
                 }
 
                 override fun onConnectFailed(device: BleDevice?, errorCode: Int) {
                     super.onConnectFailed(device, errorCode)
-                    Toast.makeText(requireContext(), "连接失败", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(Utils.getApp(), "连接失败", Toast.LENGTH_SHORT).show()
                 }
             })
             dismissAllowingStateLoss()

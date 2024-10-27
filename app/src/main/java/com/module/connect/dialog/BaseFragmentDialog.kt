@@ -69,9 +69,9 @@ abstract class BaseFragmentDialog<VB : ViewBinding> : AppCompatDialogFragment() 
         dialog?.setOnKeyListener(object : DialogInterface.OnKeyListener {
             override fun onKey(dialog: DialogInterface, keyCode: Int, event: KeyEvent): Boolean {
                 if (keyCode == KeyEvent.KEYCODE_BACK) {
-                    return true
+                    return false
                 }
-                return false
+                return true
             }
         })
     }

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="@drawable/shape_white_cnr_12"
-    android:padding="10dp">
+    android:paddingHorizontal="8dp"
+    android:paddingVertical="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,22 +22,23 @@
             <TextView
                 android:layout_width="30dp"
                 android:layout_height="wrap_content"
-                android:text="版本"
-                android:textColor="@color/black" />
+                android:gravity="center"
+                android:text="版\n本"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/et_version"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginStart="8dp"
                 android:layout_weight="1"
                 android:background="@drawable/shape_white_cnr_12"
-                android:hint="——"
                 android:paddingHorizontal="4dp"
                 android:paddingVertical="4dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
-                android:textSize="8sp" />
+                android:textSize="10sp" />
 
             <TextView
                 android:id="@+id/tv_version"
@@ -64,93 +66,660 @@
                 android:layout_width="30dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="UR\nAT"
-                android:textColor="@color/black" />
+                android:text="ME\nMS"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/et_mems"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_white_cnr_12"
+                android:paddingHorizontal="4dp"
+                android:paddingVertical="4dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/tv_mems"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:background="@drawable/shape_white_cnr_12"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="4dp"
+                android:text="查询"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_50_000000_cnr_12"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="4dp">
+
+            <TextView
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="IC\nCID"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/et_iccid"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_white_cnr_12"
+                android:paddingHorizontal="4dp"
+                android:paddingVertical="4dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/tv_iccid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:background="@drawable/shape_white_cnr_12"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="4dp"
+                android:text="查询"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_50_000000_cnr_12"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="4dp">
+
+            <TextView
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="CC\nLK"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/et_cclk"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_white_cnr_12"
+                android:paddingHorizontal="4dp"
+                android:paddingVertical="4dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/tv_cclk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:background="@drawable/shape_white_cnr_12"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="4dp"
+                android:text="查询"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_50_000000_cnr_12"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="4dp">
+
+            <TextView
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="OTA"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/et_ota"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_white_cnr_12"
+                android:paddingHorizontal="4dp"
+                android:paddingVertical="4dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/tv_ota"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:background="@drawable/shape_white_cnr_12"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="4dp"
+                android:text="查询"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_50_000000_cnr_12"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            android:padding="4dp">
+
+            <TextView
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="重置\nWiFi"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/et_reset_wifi"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_white_cnr_12"
+                android:paddingHorizontal="4dp"
+                android:paddingVertical="4dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/tv_reset_wifi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:background="@drawable/shape_white_cnr_12"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="4dp"
+                android:text="查询"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_50_000000_cnr_12"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            android:padding="4dp">
+
+            <TextView
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="自动\n升级"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/et_autoupgrade"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_white_cnr_12"
+                android:paddingHorizontal="4dp"
+                android:paddingVertical="4dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/tv_autoupgrade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:background="@drawable/shape_white_cnr_12"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="4dp"
+                android:text="查询"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_50_000000_cnr_12"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_weight="1"
+                    android:text="波特率"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_uart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp"
+                    android:text="查询"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_mcu_1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="MCU"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_mcu_2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="MCU-k803"
+                    android:padding="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_mcu_3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="MCU-UM980"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_mcu_4"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="MCU-4G"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_mcu_5"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="MCU-4G"
+                    android:padding="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_mcu_6"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="MCU-4G"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_50_000000_cnr_12"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_weight="1"
+                    android:text="连接状态"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp"
+                    android:text="查询"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_status_1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="GNSS定位状态"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_status_2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="4G Socket A"
+                    android:padding="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_status_3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="4G Socket B"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_status_4"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="以太网 Socket A"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_status_5"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="以太网 Socket B"
+
+                    android:padding="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_status_6"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:ellipsize="end"
+                    android:hint="Socket连接状态"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_50_000000_cnr_12"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_weight="1"
+                    android:text="工作状态"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_state"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp"
+                    android:text="查询"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_state_1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="电源输入电压"
+                    android:lines="2"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_state_2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="电池电压"
+                    android:lines="2"
+                    android:padding="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_state_3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="工作电流"
+                    android:lines="2"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_state_4"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="工作温度"
+                    android:lines="2"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_state_5"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="工作湿度"
+                    android:lines="2"
+                    android:padding="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_50_000000_cnr_12"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="4dp">
+
+            <TextView
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="上报\n频率"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
 
             <EditText
-                android:id="@+id/et_mcu_1"
+                android:id="@+id/et_memsfre"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="8dp"
                 android:layout_weight="1"
                 android:background="@drawable/shape_white_cnr_12"
-                android:hint="MCU"
+                android:hint="上报频率"
                 android:paddingHorizontal="4dp"
                 android:paddingVertical="4dp"
                 android:textColor="@color/black"
                 android:textColorHint="#4D000000"
-                android:textSize="8sp" />
-
-            <EditText
-                android:id="@+id/et_mcu_2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="6dp"
-                android:layout_weight="1"
-                android:background="@drawable/shape_white_cnr_12"
-                android:hint="MCU-k803"
-                android:padding="4dp"
-                android:textColor="@color/black"
-                android:textColorHint="#4D000000"
-                android:textSize="8sp" />
-
-            <EditText
-                android:id="@+id/et_mcu_3"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="6dp"
-                android:layout_weight="1"
-                android:background="@drawable/shape_white_cnr_12"
-                android:hint="MCU-UM980"
-                android:paddingHorizontal="4dp"
-                android:paddingVertical="4dp"
-                android:textColor="@color/black"
-                android:textColorHint="#4D000000"
-                android:textSize="8sp" />
-
-            <EditText
-                android:id="@+id/et_mcu_4"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="6dp"
-                android:layout_weight="1"
-                android:background="@drawable/shape_white_cnr_12"
-                android:hint="MCU-4G"
-                android:paddingHorizontal="4dp"
-                android:paddingVertical="4dp"
-                android:textColor="@color/black"
-                android:textColorHint="#4D000000"
-                android:textSize="8sp" />
-
-            <EditText
-                android:id="@+id/et_mcu_5"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="6dp"
-                android:layout_weight="1"
-                android:background="@drawable/shape_white_cnr_12"
-                android:hint="MCU-4G"
-                android:padding="4dp"
-                android:textColor="@color/black"
-                android:textColorHint="#4D000000"
-                android:textSize="8sp" />
-
-            <EditText
-                android:id="@+id/et_mcu_6"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="6dp"
-                android:layout_weight="1"
-                android:background="@drawable/shape_white_cnr_12"
-                android:hint="MCU-4G"
-                android:paddingHorizontal="4dp"
-                android:paddingVertical="4dp"
-                android:textColor="@color/black"
-                android:textColorHint="#4D000000"
-                android:textSize="8sp" />
+                android:textSize="10sp" />
 
             <TextView
-                android:id="@+id/tv_uart"
+                android:id="@+id/tv_memsfre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
@@ -168,6 +737,361 @@
             android:layout_marginTop="8dp"
             android:background="@drawable/shape_50_000000_cnr_12"
             android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_weight="1"
+                    android:text="电源使能"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_power"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp"
+                    android:text="查询"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_power_1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="GNSS模块电源"
+                    android:lines="2"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_power_2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="4G模块电源"
+                    android:lines="2"
+                    android:padding="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_power_3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="以太网模块电源"
+                    android:lines="2"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_power_4"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="WIF模块电源"
+                    android:lines="2"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_power_5"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="电台模块电源"
+                    android:lines="2"
+                    android:padding="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_50_000000_cnr_12"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_weight="1"
+                    android:text="工作模式"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_mode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp"
+                    android:text="查询"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_mode_1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="GNSS模块工作"
+                    android:lines="2"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_mode_2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="4G模块工作"
+                    android:lines="2"
+                    android:padding="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_mode_3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="以太网模块工作"
+                    android:lines="2"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_mode_4"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="WIFI模块工作"
+                    android:lines="2"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_50_000000_cnr_12"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_weight="1"
+                    android:text="TCP服务器参数"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_sock4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp"
+                    android:text="查询"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_sock4_1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:lines="2"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="A通信协议"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_sock4_2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:lines="2"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="A目标地址"
+                    android:padding="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_sock4_3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:lines="2"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="A目标端口"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_sock4_4"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:lines="2"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="B通信协议"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_sock4_5"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:lines="2"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="B目标地址"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_sock4_6"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:lines="2"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="B目标端口"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_50_000000_cnr_12"
+            android:gravity="center_vertical"
             android:orientation="horizontal"
             android:padding="4dp">
 
@@ -175,96 +1099,26 @@
                 android:layout_width="30dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="STA\nTUS"
+                android:text="前段\n解算"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
 
             <EditText
-                android:id="@+id/et_status_1"
+                android:id="@+id/et_feslo"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="8dp"
                 android:layout_weight="1"
                 android:background="@drawable/shape_white_cnr_12"
-                android:hint="GNSS定位状态"
+                android:hint="4G前段解算模式开启状态"
                 android:paddingHorizontal="4dp"
                 android:paddingVertical="4dp"
                 android:textColor="@color/black"
                 android:textColorHint="#4D000000"
-                android:textSize="8sp" />
-
-            <EditText
-                android:id="@+id/et_status_2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="6dp"
-                android:layout_weight="1"
-                android:background="@drawable/shape_white_cnr_12"
-                android:hint="4G Socket A"
-                android:padding="4dp"
-                android:textColor="@color/black"
-                android:textColorHint="#4D000000"
-                android:textSize="8sp" />
-
-            <EditText
-                android:id="@+id/et_status_3"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="6dp"
-                android:layout_weight="1"
-                android:background="@drawable/shape_white_cnr_12"
-                android:hint="4G Socket B"
-                android:paddingHorizontal="4dp"
-                android:paddingVertical="4dp"
-                android:textColor="@color/black"
-                android:textColorHint="#4D000000"
-                android:textSize="8sp" />
-
-            <EditText
-                android:id="@+id/et_status_4"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="6dp"
-                android:layout_weight="1"
-                android:background="@drawable/shape_white_cnr_12"
-                android:hint="以太网 Socket A"
-                android:paddingHorizontal="4dp"
-                android:paddingVertical="4dp"
-                android:textColor="@color/black"
-                android:textColorHint="#4D000000"
-                android:textSize="8sp" />
-
-            <EditText
-                android:id="@+id/et_status_5"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="6dp"
-                android:layout_weight="1"
-                android:background="@drawable/shape_white_cnr_12"
-                android:hint="以太网 Socket B"
-
-                android:padding="4dp"
-                android:textColor="@color/black"
-                android:textColorHint="#4D000000"
-                android:textSize="8sp" />
-
-            <EditText
-                android:id="@+id/et_status_6"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="6dp"
-                android:layout_weight="1"
-                android:background="@drawable/shape_white_cnr_12"
-                android:ellipsize="end"
-                android:hint="WIFI STA模式下Socket连接状态"
-                android:paddingHorizontal="4dp"
-                android:paddingVertical="4dp"
-                android:textColor="@color/black"
-                android:textColorHint="#4D000000"
-                android:textSize="8sp" />
+                android:textSize="10sp" />
 
             <TextView
-                android:id="@+id/tv_status"
+                android:id="@+id/tv_feslo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
@@ -276,6 +1130,2136 @@
                 android:textSize="12sp" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_50_000000_cnr_12"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_weight="1"
+                    android:text="MQTT服务器参数"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_mqtt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp"
+                    android:text="查询"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_mqtt_1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:lines="2"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="目标地址"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_mqtt_2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:lines="2"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="目标地址"
+                    android:padding="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_mqtt_3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:lines="2"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="客户用户名"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_mqtt_4"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:lines="2"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="客户密码"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_50_000000_cnr_12"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_weight="1"
+                    android:text="MQTT订阅主题"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_mqtt_theme"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp"
+                    android:text="查询"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_theme_1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:lines="2"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="主题1名称"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_theme_2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:lines="2"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="主题2名称"
+                    android:padding="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_50_000000_cnr_12"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_weight="1"
+                    android:text="MQTT发布主题"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_sendtheme"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp"
+                    android:text="查询"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_sendtheme_1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:lines="2"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="主题1名称"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_sendtheme_2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:lines="2"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="主题2名称"
+                    android:padding="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_sendtheme_3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:lines="2"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="主题3名称"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_sendtheme_4"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:lines="2"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="主题4名称"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_sendtheme_5"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:lines="2"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="主题5名称"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_50_000000_cnr_12"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="4dp">
+
+            <TextView
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="串口\n模式"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/et_serial"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_white_cnr_12"
+                android:hint="4G前段解算模式开启状态"
+                android:paddingHorizontal="4dp"
+                android:paddingVertical="4dp"
+                android:textColor="@color/black"
+                android:textColorHint="#4D000000"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/tv_serial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:background="@drawable/shape_white_cnr_12"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="4dp"
+                android:text="查询"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_50_000000_cnr_12"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_weight="1"
+                    android:text="4G NTRIP服务器参数"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_ntrip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp"
+                    android:text="查询"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_ntrip_1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="目标地址"
+                    android:lines="2"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_ntrip_2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="目标地址"
+                    android:lines="2"
+                    android:padding="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_ntrip_3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="客户用户名"
+                    android:lines="2"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_ntrip_4"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="客户密码"
+                    android:lines="2"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_ntrip_5"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="服务器挂载点"
+                    android:lines="2"
+                    android:padding="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_50_000000_cnr_12"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_weight="1"
+                    android:text="4G FTP服务器参数"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_ftp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp"
+                    android:text="查询"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_ftp_1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="目标地址"
+                    android:lines="2"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_ftp_2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="目标端口"
+                    android:lines="2"
+                    android:padding="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_ftp_3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="客户用户名"
+                    android:lines="2"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_ftp_4"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="客户密码"
+                    android:lines="2"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_ftp_5"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="文件名"
+                    android:lines="2"
+                    android:padding="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_50_000000_cnr_12"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_weight="1"
+                    android:text="以太网DHCP工作模式"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_dhcp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp"
+                    android:text="查询"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_dhcp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:lines="2"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="以太网DHCP工作模式"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_50_000000_cnr_12"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_weight="1"
+                    android:text="以太网本地的IP参数"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_ip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp"
+                    android:text="查询"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_ip_1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="目标地址"
+                    android:lines="2"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_ip_2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="目标地址"
+                    android:lines="2"
+                    android:padding="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_ip_3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="客户用户名"
+                    android:lines="2"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_50_000000_cnr_12"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_weight="1"
+                    android:text="NET TCP/UDP服务器参数"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_net"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp"
+                    android:text="查询"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_net_1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="A通信协议"
+                    android:lines="2"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_net_2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="A目标地址"
+                    android:lines="2"
+                    android:padding="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_net_3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="A目标端口"
+                    android:lines="2"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_net_4"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="B通信协议"
+                    android:lines="2"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_net_5"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="B目标地址"
+                    android:lines="2"
+                    android:padding="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_net_6"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="B目标端口"
+                    android:lines="2"
+                    android:padding="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_50_000000_cnr_12"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_weight="1"
+                    android:text="以太网 NTRIP服务器参数"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_serverntrip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp"
+                    android:text="查询"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_serverntrip_1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="目标地址"
+                    android:lines="2"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_serverntrip_2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="目标地址"
+                    android:lines="2"
+                    android:padding="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_serverntrip_3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="客户用户名"
+                    android:lines="2"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_serverntrip_4"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="客户密码"
+                    android:lines="2"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_serverntrip_5"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="挂载点"
+                    android:lines="2"
+                    android:padding="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_50_000000_cnr_12"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_weight="1"
+                    android:text="WIFI热点的名称和密码"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_wifihot"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp"
+                    android:text="查询"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_wifihot_1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="WIFI模块AP模式热点名称"
+                    android:lines="2"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_wifihot_2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="WIFI模块AP模式热点密码"
+                    android:lines="2"
+                    android:padding="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_50_000000_cnr_12"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_weight="1"
+                    android:text="WIFI连接热点的名称和密码"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_connectwifi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp"
+                    android:text="查询"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_connectwifi_1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:lines="2"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="名称"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_connectwifi_2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:lines="2"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="密码"
+                    android:padding="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_connectwifi_3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:lines="2"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="状态"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_connectwifi_4"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:lines="2"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="IP"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_connectwifi_5"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:lines="2"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="掩码"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_connectwifi_6"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:lines="2"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="网关"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_50_000000_cnr_12"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_weight="1"
+                    android:text="TCP/UDP服务器参数"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_udp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp"
+                    android:text="查询"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_udp_1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:lines="2"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="是否立即重连"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_udp_2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:lines="2"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="目标地址"
+                    android:padding="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_udp_3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:lines="2"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="目标端口"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_50_000000_cnr_12"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_weight="1"
+                    android:text="WIFI MQTT服务器参数"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_wifimqtt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp"
+                    android:text="查询"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_wifimqtt_1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:lines="2"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="目标地址"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_wifimqtt_2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:lines="2"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="目标端口"
+                    android:padding="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_wifimqtt_3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:lines="2"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="客户ID"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_wifimqtt_4"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:lines="2"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="客户用户名"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_wifimqtt_5"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:lines="2"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="客户密码"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_50_000000_cnr_12"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_weight="1"
+                    android:text="WIFI MQTT订阅与发布的主题名"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_mqttwifitheme"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp"
+                    android:text="查询"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_mqttwifitheme_1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:lines="2"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="WIFI模块MQTT服务器订阅的主题"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_mqttwifitheme_2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:lines="2"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="WIFI模块MQTT服务器订阅的主题"
+                    android:padding="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_50_000000_cnr_12"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_weight="1"
+                    android:text="WIFI NTRIP服务器参数"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_wifintrip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp"
+                    android:text="查询"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_wifintrip_1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:lines="2"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="目标地址"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_wifintrip_2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:lines="2"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="目标地址"
+                    android:padding="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_wifintrip_3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:lines="2"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="用户名"
+                    android:padding="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_wifintrip_4"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:lines="2"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="密码"
+                    android:padding="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/et_wifintrip_5"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:lines="2"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="挂载点"
+                    android:padding="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_50_000000_cnr_12"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_weight="1"
+                    android:text="WIFI模块工作模式"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_wifimode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp"
+                    android:text="查询"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_wifimode_1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:lines="2"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="WIFI 蓝牙模块工作模式"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_50_000000_cnr_12"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_weight="1"
+                    android:text="WIFI蓝牙名称"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_wifiname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp"
+                    android:text="查询"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_wifiname_1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:lines="2"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="WIFI 蓝牙名称"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_50_000000_cnr_12"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_weight="1"
+                    android:text="电台配置"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_radiomode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp"
+                    android:text="查询"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_radiomode_1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:lines="2"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="配置电台"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_50_000000_cnr_12"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_weight="1"
+                    android:text="电台空中传输速率"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_radiospeed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp"
+                    android:text="查询"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_radiospeed_1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:lines="2"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="电台空中传输速率"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_50_000000_cnr_12"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_weight="1"
+                    android:text="电台ID配置"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_radioid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp"
+                    android:text="查询"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_radioid_1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:lines="2"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="电台通讯设备ID"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_50_000000_cnr_12"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_weight="1"
+                    android:text="GNSS模块串口2数据透传"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_gnss2set"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp"
+                    android:text="设置"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_gnss2set_1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:lines="2"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="GNSS模块配置指令"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_50_000000_cnr_12"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_weight="1"
+                    android:text="GNSS模块串口3数据透传"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_gnss3set"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp"
+                    android:text="设置"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_gnss3set_1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:lines="2"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="GNSS模块配置指令"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_50_000000_cnr_12"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_weight="1"
+                    android:text="心跳包"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_heartbeat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp"
+                    android:text="设置"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_heartbeat_1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:lines="2"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="GNSS模块配置指令"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_50_000000_cnr_12"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_weight="1"
+                    android:text="启动升级指令"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_autoupgradeset"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp"
+                    android:text="设置"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_autoupgrade_1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:lines="2"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_white_cnr_12"
+                    android:hint="升级程序的校验码"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#4D000000"
+                    android:textSize="10sp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
     </LinearLayout>
 
 

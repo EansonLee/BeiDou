@@ -19,13 +19,10 @@ import com.module.connect.databinding.FragmentHomeBinding
 import com.module.connect.dialog.BlueToothListDialog
 import com.module.connect.dialog.ResultDialog
 import com.module.connect.util.BLEUtils
-import com.module.connect.util.ConnectUtil
-import com.module.connect.util.KeyValueUtils
 import com.module.connect.util.LiveDataBus
 import com.module.connect.util.PermissionComplianceManager
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import javax.security.auth.callback.Callback
 
 class HomeFragment : Fragment() {
 
@@ -69,7 +66,7 @@ class HomeFragment : Fragment() {
             }
         })
 
-        binding.ll1.setOnClickListener {
+        binding.llInclude.tvVersion.setOnClickListener {
             BLEUtils.sendCommand("AT+VERSION=?\r\n") {
             }
         }
@@ -90,86 +87,12 @@ class HomeFragment : Fragment() {
         }
 
 
-        binding.ll4.setOnClickListener {
+        binding.llSave.setOnClickListener {
             BLEUtils.sendCommand("AT+SAVE\r\n") {
                 BLEUtils.isConnected = false
                 BLEUtils.isSuccess = false
             }
         }
-
-        binding.ll5.setOnClickListener {
-            ConnectUtil.CURRENT_BLUE_SOCKET?.let {
-//                val res = CommandUtil.sendCommandWithResponse(it, "AT+STATUS=?")
-//                if (TextUtils.isEmpty(res)) {
-//                    ResultDialog.newInstance(childFragmentManager, "", "")
-//                } else {
-//                    ResultDialog.newInstance(childFragmentManager, res!!, "")
-//                }
-            }
-        }
-
-        binding.ll6.setOnClickListener {
-            ConnectUtil.CURRENT_BLUE_SOCKET?.let {
-//                val res = CommandUtil.sendCommandWithResponse(it, "AT+STATE=?")
-//                if (TextUtils.isEmpty(res)) {
-//                    ResultDialog.newInstance(childFragmentManager, "", "")
-//                } else {
-//                    ResultDialog.newInstance(childFragmentManager, res!!, "")
-//                }
-            }
-        }
-
-        binding.ll7.setOnClickListener {
-//            ConnectUtil.CURRENT_BLUE_SOCKET?.let {
-//                val res = CommandUtil.sendCommandWithResponse(it, "AT+MEMS=?")
-//                if (TextUtils.isEmpty(res)) {
-//                    ResultDialog.newInstance(childFragmentManager, "", "")
-//                } else {
-//                    ResultDialog.newInstance(childFragmentManager, res!!, "")
-//                }
-//            }
-        }
-
-        binding.ll8.setOnClickListener {
-//            ConnectUtil.CURRENT_BLUE_SOCKET?.let {
-//                val res = CommandUtil.sendCommandWithResponse(it, "AT+ICCID=?")
-//                if (TextUtils.isEmpty(res)) {
-//                    ResultDialog.newInstance(childFragmentManager, "", "")
-//                } else {
-//                    ResultDialog.newInstance(childFragmentManager, res!!, "")
-//                }
-//            }
-        }
-
-        binding.ll9.setOnClickListener {
-//            ConnectUtil.CURRENT_BLUE_SOCKET?.let {
-//                val res = CommandUtil.sendCommandWithResponse(it, "AT+CCLK=?")
-//                if (TextUtils.isEmpty(res)) {
-//                    ResultDialog.newInstance(childFragmentManager, "", "")
-//                } else {
-//                    ResultDialog.newInstance(childFragmentManager, res!!, "")
-//                }
-//            }
-        }
-
-        binding.ll10.setOnClickListener {
-//            ConnectUtil.CURRENT_BLUE_SOCKET?.let {
-//                val res = CommandUtil.sendCommandWithResponse(it, "AT+CSQ/4G=?")
-//                if (TextUtils.isEmpty(res)) {
-//                    ResultDialog.newInstance(childFragmentManager, "", "")
-//                } else {
-//                    ResultDialog.newInstance(childFragmentManager, res!!, "")
-//                }
-//            }
-        }
-
-        binding.ll11.setOnClickListener {
-//            ConnectUtil.CURRENT_BLUE_SOCKET?.let {
-//                CommandUtil.sendCommand(it, "AT+RST/WIFI")
-//                ResultDialog.newInstance(childFragmentManager, "成功", "")
-//            }
-        }
-
 
         binding.tvConnect.setOnClickListener {
             PermissionComplianceManager.requestFineLocationPermissionHasTip(

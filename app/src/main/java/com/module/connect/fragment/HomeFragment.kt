@@ -74,7 +74,7 @@ class HomeFragment : Fragment() {
             }
         }
 
-        binding.ll2.setOnClickListener {
+        binding.llReboot.setOnClickListener {
             BLEUtils.sendCommand("AT+REBOOT=?\r\n") {
                 ResultDialog.newInstance(childFragmentManager, "发送成功", "")
                 BLEUtils.isConnected = false
@@ -82,7 +82,7 @@ class HomeFragment : Fragment() {
             }
         }
 
-        binding.ll3.setOnClickListener {
+        binding.llRestart.setOnClickListener {
             BLEUtils.sendCommand("AT+CLEAR\r\n") {
                 BLEUtils.isConnected = false
                 BLEUtils.isSuccess = false

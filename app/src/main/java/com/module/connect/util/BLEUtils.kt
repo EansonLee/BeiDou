@@ -1,12 +1,15 @@
 package com.module.connect.util
 
 import android.bluetooth.BluetoothGattCharacteristic
+import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.FragmentManager
 import cn.com.heaton.blelibrary.ble.Ble
+import cn.com.heaton.blelibrary.ble.callback.BleReadCallback
 import cn.com.heaton.blelibrary.ble.callback.BleWriteCallback
 import cn.com.heaton.blelibrary.ble.model.BleDevice
 import com.blankj.utilcode.util.Utils
+import com.module.connect.consts.IConsts
 
 object BLEUtils {
 

@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import cn.com.heaton.blelibrary.ble.Ble
 import cn.com.heaton.blelibrary.ble.callback.BleConnectCallback
@@ -23,6 +24,9 @@ import com.module.connect.fragment.HomeFragment
 import com.module.connect.util.BLEUtils
 import com.module.connect.util.KeyValueUtils
 import com.module.connect.util.LiveDataBus
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import java.io.ByteArrayOutputStream
 
 
 class BlueToothListDialog : BaseFragmentDialog<DialogBlueToothListBinding>() {
@@ -49,6 +53,9 @@ class BlueToothListDialog : BaseFragmentDialog<DialogBlueToothListBinding>() {
 
     private val list: List<BleDevice> by params("key_list") { mutableListOf() }
 
+    private val byteArrayOutputStream = ByteArrayOutputStream()
+    private var isFirstDataReceived = true
+    private var lastNotifyTime = System.currentTimeMillis()
 
     override fun getBinding(
         inflate: LayoutInflater,
@@ -82,10 +89,44 @@ class BlueToothListDialog : BaseFragmentDialog<DialogBlueToothListBinding>() {
                                 characteristic: BluetoothGattCharacteristic
                             ) {
                                 val uuid = characteristic.uuid
-                                val res = BLEUtils.byteArrayToAsciiString(characteristic.value)
-                                Log.e("-------", "onChanged==uuid:$uuid")
-                                Log.e("-------", "onChanged==data:$res")
-                                LiveDataBus.postString(IConsts.KEY_COMMEND_RES, res)
+                                val newData = characteristic.value
+//                                Log.e("-------", "onChanged==uuid:$uuid")
+//
+//                                // 如果还没有接收到第一条数据，直接保存第一条结果
+//                                if (!isFirstDataReceived) {
+//                                    byteArrayOutputStream.write(newData)
+//                                    isFirstDataReceived = true
+//                                } else {
+//                                    byteArrayOutputStream.write(newData)
+//
+//                                    // 获取当前时间
+//                                    val currentTime = System.currentTimeMillis()
+//
+//                                    // 检查是否到达一定的时间间隔，比如1000ms
+//                                    if (currentTime - lastNotifyTime >= 1000) {
+//                                        val finalResult =BLEUtils.byteArrayToAsciiString(byteArrayOutputStream.toByteArray())
+//
+//                                        // 清空 StringBuilder 为下一轮累积做准备
+//                                        BLEUtils.byteArrayToAsciiString(byteArrayOutputStream.toByteArray())
+//                                        lastNotifyTime = currentTime
+//
+//                                        Log.e("-------", "Final result: $finalResult")
+//                                        LiveDataBus.postString(IConsts.KEY_COMMEND_RES, finalResult)
+//                                    }
+//                                }
+                                byteArrayOutputStream.write(newData)
+                                if(!isFirstDataReceived) {
+                                    return
+                                }
+                                isFirstDataReceived = false
+                                lifecycleScope.launch {
+                                    delay(300)
+                                    val finalResult =BLEUtils.byteArrayToAsciiString(byteArrayOutputStream.toByteArray())
+                                    Log.e("-------", "Final result: $finalResult")
+                                    LiveDataBus.postString(IConsts.KEY_COMMEND_RES, finalResult)
+                                    byteArrayOutputStream.reset()
+                                    isFirstDataReceived = true
+                                }
                             }
 
                             override fun onNotifySuccess(device: BleDevice) {

@@ -8,18 +8,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.get
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import cn.com.heaton.blelibrary.ble.Ble
 import cn.com.heaton.blelibrary.ble.callback.BleScanCallback
 import cn.com.heaton.blelibrary.ble.model.BleDevice
-import com.module.connect.adapter.StackAdapter
-import com.module.connect.bean.StackBean
+import com.module.connect.adapter.CommandAdapter
+import com.module.connect.bean.CommandBean
 import com.module.connect.consts.IConsts
 import com.module.connect.databinding.FragmentHomeBinding
 import com.module.connect.dialog.BlueToothListDialog
+import com.module.connect.model.CommandModel
 import com.module.connect.util.BLEUtils
 import com.module.connect.util.InCludeUtils
 import com.module.connect.util.LiveDataBus
@@ -31,6 +34,11 @@ class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
+
+    private lateinit var mCommandAdapter: CommandAdapter
+    private val mList = mutableListOf<CommandBean>()
+
+    private val viewModel: CommandModel by viewModels()
 
     companion object {
         val deviceList = mutableListOf<BleDevice>()
@@ -69,6 +77,221 @@ class HomeFragment : Fragment() {
                 requireActivity().finish()
             }
         })
+        with(binding.rvCommand) {
+            mCommandAdapter = CommandAdapter {
+                when (it.command) {
+                    "AT+VERSION=?" -> {
+                        cummand = "AT+VERSION=?"
+                        BLEUtils.sendCommand("AT+VERSION=?\r\n") {
+                        }
+                    }
+
+                    "AT+MEMS=?" -> {
+                        cummand = "AT+MEMS=?"
+                        BLEUtils.sendCommand("AT+MEMS=?\r\n") {
+                        }
+                    }
+
+                    "AT+ICCID=?" -> {
+                        cummand = "AT+ICCID=?"
+                        BLEUtils.sendCommand("AT+ICCID=?\r\n") {
+                        }
+                    }
+
+                    "AT+UART=?" -> {
+                        cummand = "AT+UART=?"
+                        BLEUtils.sendCommand("AT+UART=?\r\n") {
+                        }
+                    }
+
+                    "AT+STATUS=?" -> {
+                        cummand = "AT+STATUS=?"
+                        BLEUtils.sendCommand("AT+STATUS=?\r\n") {
+                        }
+                    }
+
+                    "AT+STATE=?" -> {
+                        cummand = "AT+STATE=?"
+                        BLEUtils.sendCommand("AT+STATE=?\r\n") {
+                        }
+                    }
+
+                    "AT+MEMS_FRE=?" -> {
+                        cummand = "AT+MEMS_FRE=?"
+                        BLEUtils.sendCommand("AT+MEMS_FRE=?\r\n") {
+                        }
+                    }
+
+                    "AT+POWER=?" -> {
+                        cummand = "AT+POWER=?"
+                        BLEUtils.sendCommand("AT+POWER=?\r\n") {
+                        }
+                    }
+
+                    "AT+MODE=?" -> {
+                        cummand = "AT+MODE=?"
+                        BLEUtils.sendCommand("AT+MODE=?\r\n") {
+                        }
+                    }
+
+                    "AT+CCLK=?" -> {
+                        cummand = "AT+CCLK=?"
+                        BLEUtils.sendCommand("AT+CCLK=?\r\n") {
+                        }
+                    }
+
+                    "AT+CSQ/4G=?" -> {
+                        cummand = "AT+CSQ/4G=?"
+                        BLEUtils.sendCommand("AT+CSQ/4G=?\r\n") {
+                        }
+                    }
+
+                    "AT+SOCK/4G=?" -> {
+                        cummand = "AT+SOCK/4G=?"
+                        BLEUtils.sendCommand("AT+SOCK/4G=?\r\n") {
+                        }
+                    }
+
+                    "AT+FESLO/4G=?" -> {
+                        cummand = "AT+FESLO/4G=?"
+                        BLEUtils.sendCommand("AT+FESLO/4G=?\r\n") {
+                        }
+                    }
+
+                    "AT+MQTTSVR/4G=?" -> {
+                        cummand = "AT+MQTTSVR/4G=?"
+                        BLEUtils.sendCommand("AT+MQTTSVR/4G=?\r\n") {
+                        }
+                    }
+
+                    "AT+MQTT_SUB/4G=?" -> {
+                        cummand = "AT+MQTT_SUB/4G=?"
+                        BLEUtils.sendCommand("AT+MQTT_SUB/4G=?\r\n") {
+                        }
+                    }
+
+                    "AT+MQTT_PUB/4G=?" -> {
+                        cummand = "AT+MQTT_PUB/4G=?"
+                        BLEUtils.sendCommand("AT+MQTT_PUB/4G=?\r\n") {
+                        }
+                    }
+
+                    "AT+MQTT_SERIAL_MODE/4G=?" -> {
+                        cummand = "AT+MQTT_SERIAL_MODE/4G=?"
+                        BLEUtils.sendCommand("AT+MQTT_SERIAL_MODE/4G=?\r\n") {
+                        }
+                    }
+
+                    "AT+MQTT_NTRIPSVR/4G=?" -> {
+                        cummand = "AT+NTRIPSVR/4G=?"
+                        BLEUtils.sendCommand("AT+NTRIPSVR/4G=?\r\n") {
+                        }
+                    }
+
+                    "AT+FTPSVR/4G=?" -> {
+                        cummand = "AT+FTPSVR/4G=?"
+                        BLEUtils.sendCommand("AT+FTPSVR/4G=?\r\n") {
+                        }
+                    }
+
+                    "AT+DHCP/NET=?" -> {
+                        cummand = "AT+DHCP/NET=?"
+                        BLEUtils.sendCommand("AT+DHCP/NET=?\r\n") {
+                        }
+                    }
+
+                    "AT+LOCALIP/NET=?" -> {
+                        cummand = "AT+LOCALIP/NET=?"
+                        BLEUtils.sendCommand("AT+LOCALIP/NET=?\r\n") {
+                        }
+                    }
+
+                    "AT+SERVERIP/NET=?" -> {
+                        cummand = "AT+SERVERIP/NET=?"
+                        BLEUtils.sendCommand("AT+SERVERIP/NET=?\r\n") {
+                        }
+                    }
+
+                    "AT+NTRIPSVR/NET=?" -> {
+                        cummand = "AT+NTRIPSVR/NET=?"
+                        BLEUtils.sendCommand("AT+NTRIPSVR/NET=?\r\n") {
+                        }
+                    }
+
+//                    "AT+RST/WIFI" -> {
+//                        InCludeUtils.setResetWifi(binding, it)
+//                    }
+
+                    "AT+AP/WIFI=?" -> {
+                        cummand = "AT+AP/WIFI=?"
+                        BLEUtils.sendCommand("AT+AP/WIFI=?\r\n") {
+                        }
+                    }
+
+                    "AT+STA/WIFI=?" -> {
+                        cummand = "AT+STA/WIFI=?"
+                        BLEUtils.sendCommand("AT+STA/WIFI=?\r\n") {
+                        }
+                    }
+
+                    "AT+SOCK/WIFI=?" -> {
+                        cummand = "AT+SOCK/WIFI=?"
+                        BLEUtils.sendCommand("AT+SOCK/WIFI=?\r\n") {
+                        }
+                    }
+
+                    "AT+MQTTSVR/WIFI=?" -> {
+                        cummand = "AT+MQTTSVR/WIFI=?"
+                        BLEUtils.sendCommand("AT+MQTTSVR/WIFI=?\r\n") {
+                        }
+                    }
+
+                    "AT+MQTT_SUB_PUB/WIFI=?" -> {
+                        cummand = "AT+MQTT_SUB_PUB/WIFI=?"
+                        BLEUtils.sendCommand("AT+MQTT_SUB_PUB/WIFI=?\r\n") {
+                        }
+                    }
+
+                    "AT+NTRIPSVR/WIFI=?" -> {
+                        cummand = "AT+NTRIPSVR/WIFI=?"
+                        BLEUtils.sendCommand("AT+NTRIPSVR/WIFI=?\r\n") {
+                        }
+                    }
+
+                    "AT+BLEMODE/WIFI=?" -> {
+                        cummand = "AT+BLEMODE/WIFI=?"
+                        BLEUtils.sendCommand("AT+BLEMODE/WIFI=?\r\n") {
+                        }
+                    }
+
+                    "AT+BLENAME/WIFI=?" -> {
+                        cummand = "AT+BLENAME/WIFI=?"
+                        BLEUtils.sendCommand("AT+BLENAME/WIFI=?\r\n") {
+                        }
+                    }
+
+                    "AT+CONFIG/DT?" -> {
+                        cummand = "AT+CONFIG/DT=?"
+                        BLEUtils.sendCommand("AT+CONFIG/DT=?\r\n") {
+                        }
+                    }
+
+                    "AT+AIR_BAUD/DT?" -> {
+                        cummand = "AT+AIR_BAUD/DT=?"
+                        BLEUtils.sendCommand("AT+AIR_BAUD/DT=?\r\n") {
+                        }
+                    }
+
+                    "AT+ID/DT?" -> {
+                        cummand = "AT+ID/DT=?"
+                        BLEUtils.sendCommand("AT+ID/DT=?\r\n") {
+                        }
+                    }
+                }
+            }
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = mCommandAdapter
+        }
 
         // 重启
         binding.llReboot.setOnClickListener {
@@ -125,236 +348,12 @@ class HomeFragment : Fragment() {
         }
 
 
-        // 版本号
-        binding.llInclude.tvVersion.setOnClickListener {
-            cummand = "AT+VERSION=?"
-            BLEUtils.sendCommand("AT+VERSION=?\r\n") {
-            }
-        }
-
-        // 查询MEMS数据
-        binding.llInclude.tvMems.setOnClickListener {
-            cummand = "AT+MEMS=?"
-            BLEUtils.sendCommand("AT+MEMS=?\r\n") {
-            }
-        }
-        // 查询SIM卡ICCID
-        binding.llInclude.tvIccid.setOnClickListener {
-            cummand = "AT+ICCID=?"
-            BLEUtils.sendCommand("AT+ICCID=?\r\n") {
-            }
-        }
-        //波特率
-        binding.llInclude.tvUart.setOnClickListener {
-            cummand = "AT+UART=?"
-            BLEUtils.sendCommand("AT+UART=?\r\n") {
-            }
-        }
-        // 连接状态
-        binding.llInclude.tvStatus.setOnClickListener {
-            cummand = "AT+STATUS=?"
-            BLEUtils.sendCommand("AT+STATUS=?\r\n") {
-            }
-        }
-        // 工作状态
-        binding.llInclude.tvState.setOnClickListener {
-            cummand = "AT+STATE=?"
-            BLEUtils.sendCommand("AT+STATE=?\r\n") {
-            }
-        }
-        // 数据上报频率
-        binding.llInclude.tvMemsfre.setOnClickListener {
-            cummand = "AT+MEMS_FRE=?"
-            BLEUtils.sendCommand("AT+MEMS_FRE=?\r\n") {
-            }
-        }
-        // 电源使能
-        binding.llInclude.tvPower.setOnClickListener {
-            cummand = "AT+POWER=?"
-            BLEUtils.sendCommand("AT+POWER=?\r\n") {
-            }
-        }
-        // 工作模式
-        binding.llInclude.tvMode.setOnClickListener {
-            cummand = "AT+MODE=?"
-            BLEUtils.sendCommand("AT+MODE=?\r\n") {
-            }
-        }
-        // 工作模式
-        binding.llInclude.tvMode.setOnClickListener {
-            cummand = "AT+MODE=?"
-            BLEUtils.sendCommand("AT+MODE=?\r\n") {
-            }
-        }
-        // 查询时间和日期
-        binding.llInclude.tvCclk.setOnClickListener {
-            cummand = "AT+CCLK=?"
-            BLEUtils.sendCommand("AT+CCLK=?\r\n") {
-            }
-        }
-        // 4G网络信号强度
-        binding.llInclude.tvCclk.setOnClickListener {
-            cummand = "AT+CSQ/4G=?"
-            BLEUtils.sendCommand("AT+CSQ/4G=?\r\n") {
-            }
-        }
-        // 4G TCP服务器参数
-        binding.llInclude.tvSock4.setOnClickListener {
-            cummand = "AT+SOCK/4G=?"
-            BLEUtils.sendCommand("AT+SOCK/4G=?\r\n") {
-            }
-        }
-        // 4G前段解算模式开启状态
-        binding.llInclude.tvFeslo.setOnClickListener {
-            cummand = "AT+FESLO/4G=?"
-            BLEUtils.sendCommand("AT+FESLO/4G=?\r\n") {
-            }
-        }
-        // 4G MQTT服务器参数
-        binding.llInclude.tvMqtt.setOnClickListener {
-            cummand = "AT+MQTTSVR/4G=?"
-            BLEUtils.sendCommand("AT+MQTTSVR/4G=?\r\n") {
-            }
-        }
-        // 4G MQTT订阅主题
-        binding.llInclude.tvMqttTheme.setOnClickListener {
-            cummand = "AT+MQTT_SUB/4G=?"
-            BLEUtils.sendCommand("AT+MQTT_SUB/4G=?\r\n") {
-            }
-        }
-        // 4G MQTT发布主题
-        binding.llInclude.tvSendtheme.setOnClickListener {
-            cummand = "AT+MQTT_PUB/4G=?"
-            BLEUtils.sendCommand("AT+MQTT_PUB/4G=?\r\n") {
-            }
-        }
-        // 4G MQTT 串口模式
-        binding.llInclude.tvSerial.setOnClickListener {
-            cummand = "AT+MQTT_SERIAL_MODE/4G=?"
-            BLEUtils.sendCommand("AT+MQTT_SERIAL_MODE/4G=?\r\n") {
-            }
-        }
-        // 4G NTRIP服务器参数
-        binding.llInclude.tvNtrip.setOnClickListener {
-            cummand = "AT+NTRIPSVR/4G=?"
-            BLEUtils.sendCommand("AT+NTRIPSVR/4G=?\r\n") {
-            }
-        }
-        // 4G FTP服务器参数
-        binding.llInclude.tvFtp.setOnClickListener {
-            cummand = "AT+FTPSVR/4G=?"
-            BLEUtils.sendCommand("AT+FTPSVR/4G=?\r\n") {
-            }
-        }
-        // 以太网本地的IP参数
-        binding.llInclude.tvDhcp.setOnClickListener {
-            cummand = "AT+DHCP/NET=?"
-            BLEUtils.sendCommand("AT+DHCP/NET=?\r\n") {
-            }
-        }
-        // 以太网DHCP工作模式
-        binding.llInclude.tvDhcp.setOnClickListener {
-            cummand = "AT+DHCP/NET=?"
-            BLEUtils.sendCommand("AT+DHCP/NET=?\r\n") {
-            }
-        }
-        // 以太网本地的IP参数
-        binding.llInclude.tvIp.setOnClickListener {
-            cummand = "AT+LOCALIP/NET=?"
-            BLEUtils.sendCommand("AT+LOCALIP/NET=?\r\n") {
-            }
-        }
-        // NET TCP/UDP服务器参数
-        binding.llInclude.tvNet.setOnClickListener {
-            cummand = "AT+SERVERIP/NET=?"
-            BLEUtils.sendCommand("AT+SERVERIP/NET=?\r\n") {
-            }
-        }
-        // 以太网 NTRIP服务器参数
-        binding.llInclude.tvServerntrip.setOnClickListener {
-            cummand = "AT+NTRIPSVR/NET=?"
-            BLEUtils.sendCommand("AT+NTRIPSVR/NET=?\r\n") {
-            }
-        }
         // 重置WIFI设置
-        binding.llInclude.tvResetWifi.setOnClickListener {
-            cummand = "AT+RST/WIFI"
-            BLEUtils.sendCommand("AT+RST/WIFI\r\n") {
-                LiveDataBus.postString(IConsts.KEY_COMMEND_RES, "发送成功")
-            }
-        }
-        // WIFI热点的名称和密码
-        binding.llInclude.tvResetWifi.setOnClickListener {
-            cummand = "AT+AP/WIFI=?"
-            BLEUtils.sendCommand("AT+AP/WIFI=?\r\n") {
-            }
-        }
-        // WIFI热点的名称和密码
-        binding.llInclude.tvResetWifi.setOnClickListener {
-            cummand = "AT+AP/WIFI=?"
-            BLEUtils.sendCommand("AT+AP/WIFI=?\r\n") {
-            }
-        }
-        // WIFI连接热点的名称和密码
-        binding.llInclude.tvConnectwifi.setOnClickListener {
-            cummand = "AT+STA/WIFI=?"
-            BLEUtils.sendCommand("AT+STA/WIFI=?\r\n") {
-            }
-        }
-        // WIFI TCP/UDP服务器参数
-        binding.llInclude.tvUdp.setOnClickListener {
-            cummand = "AT+SOCK/WIFI=?"
-            BLEUtils.sendCommand("AT+SOCK/WIFI=?\r\n") {
-            }
-        }
-        // WIFI MQTT服务器参数
-        binding.llInclude.tvWifimqtt.setOnClickListener {
-            cummand = "AT+MQTTSVR/WIFI=?"
-            BLEUtils.sendCommand("AT+MQTTSVR/WIFI=?\r\n") {
-            }
-        }
-        // 34 WIFI MQTT订阅与发布的主题名
-        binding.llInclude.tvMqttwifitheme.setOnClickListener {
-            cummand = "AT+MQTT_SUB_PUB/WIFI=?"
-            BLEUtils.sendCommand("AT+MQTT_SUB_PUB/WIFI=?\r\n") {
-            }
-        }
-        // 35 WIFI NTRIP服务器参数
-        binding.llInclude.tvWifintrip.setOnClickListener {
-            cummand = "AT+NTRIPSVR/WIFI=?"
-            BLEUtils.sendCommand("AT+NTRIPSVR/WIFI=?\r\n") {
-            }
-        }
-        // 36 WIFI模块工作模式
-        binding.llInclude.tvWifintrip.setOnClickListener {
-            cummand = "AT+BLEMODE/WIFI=?"
-            BLEUtils.sendCommand("AT+BLEMODE/WIFI=?\r\n") {
-            }
-        }
-        // 37 WIFI蓝牙名称
-        binding.llInclude.tvWifiname.setOnClickListener {
-            cummand = "AT+BLENAME/WIFI=?"
-            BLEUtils.sendCommand("AT+BLENAME/WIFI=?\r\n") {
-            }
-        }
-        // 38 电台配置
-        binding.llInclude.tvRadiomode.setOnClickListener {
-            cummand = "AT+CONFIG/DT=?"
-            BLEUtils.sendCommand("AT+CONFIG/DT=?\r\n") {
-            }
-        }
-        // 39 电台空中传输速率
-        binding.llInclude.tvRadiomode.setOnClickListener {
-            cummand = "AT+AIR_BAUD/DT=?"
-            BLEUtils.sendCommand("AT+AIR_BAUD/DT=?\r\n") {
-            }
-        }
-        // 39 电台ID配置
-        binding.llInclude.tvRadiomode.setOnClickListener {
-            cummand = "AT+ID/DT=?"
-            BLEUtils.sendCommand("AT+ID/DT=?\r\n") {
-            }
-        }
+//            cummand = "AT+RST/WIFI"
+//            BLEUtils.sendCommand("AT+RST/WIFI\r\n") {
+//                LiveDataBus.postString(IConsts.KEY_COMMEND_RES, "发送成功")
+//            }
+
     }
 
     private fun initData() {
@@ -367,6 +366,13 @@ class HomeFragment : Fragment() {
             }
         }
 
+        viewModel.commandList.observe(viewLifecycleOwner) {
+            mList.addAll(it)
+            mCommandAdapter.submitList(it)
+        }
+        viewModel.getAllCommand()
+
+
         LiveDataBus.observeString(IConsts.KEY_COMMEND_RES, viewLifecycleOwner) { res ->
 //            res?.let {
 //                if (BLEUtils.isSuccess) {
@@ -375,8 +381,11 @@ class HomeFragment : Fragment() {
 //            }
             res?.let {
                 BLEUtils.isSuccess = false
+                val index = getItemIndexByName(cummand)
+                mList[index].res = it
+                mCommandAdapter.submitList(mList)
 
-                when (cummand) {
+                /*when (cummand) {
                     "AT+VERSION=?" -> {
                         InCludeUtils.seVersion(binding, it)
                     }
@@ -516,7 +525,7 @@ class HomeFragment : Fragment() {
                     "AT+ID/DT?" -> {
                         InCludeUtils.setDtId(binding, it)
                     }
-                }
+                }*/
             }
         }
     }
@@ -533,6 +542,10 @@ class HomeFragment : Fragment() {
             binding.tvDisconnect.visibility = View.GONE
             binding.tvLink.visibility = View.GONE
         }
+    }
+
+    fun getItemIndexByName(cmmand: String): Int {
+        return mList.indexOfFirst { it.command == cmmand }
     }
 
 

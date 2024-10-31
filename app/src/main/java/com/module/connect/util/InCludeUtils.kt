@@ -6,7 +6,7 @@ import com.module.connect.databinding.FragmentHomeBinding
 object InCludeUtils {
 
 
-    fun seVersion(binding: FragmentHomeBinding, str: String) {
+    /*fun seVersion(binding: FragmentHomeBinding, str: String) {
         binding.llInclude.etVersion.text = str
     }
 
@@ -266,6 +266,6 @@ object InCludeUtils {
 
    private fun areAllEditTextsNotNullOrEmpty(vararg editTexts: EditText): Boolean {
         return editTexts.all { it.text?.isNotEmpty() == true }
-    }
+    }*/
 
 }

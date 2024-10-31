@@ -15,13 +15,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import cn.com.heaton.blelibrary.ble.Ble
 import cn.com.heaton.blelibrary.ble.callback.BleScanCallback
 import cn.com.heaton.blelibrary.ble.model.BleDevice
-import com.module.connect.adapter.BlueToothAdapter
 import com.module.connect.adapter.StackAdapter
 import com.module.connect.bean.StackBean
 import com.module.connect.consts.IConsts
 import com.module.connect.databinding.FragmentHomeBinding
 import com.module.connect.dialog.BlueToothListDialog
-import com.module.connect.dialog.ResultDialog
 import com.module.connect.util.BLEUtils
 import com.module.connect.util.InCludeUtils
 import com.module.connect.util.LiveDataBus
@@ -33,15 +31,11 @@ class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private var cummand = ""
-    private var mStackAdapter: StackAdapter? = null
-    private var mStackList = mutableListOf<StackBean>()
-
-    private var isSearchUart = false
 
     companion object {
         val deviceList = mutableListOf<BleDevice>()
         val devices = mutableListOf<BleDevice>()
+        var cummand = ""
     }
 
     override fun onCreateView(
@@ -75,10 +69,6 @@ class HomeFragment : Fragment() {
                 requireActivity().finish()
             }
         })
-        mStackAdapter = StackAdapter()
-        binding.rvStack.adapter = mStackAdapter
-        binding.rvStack.layoutManager = LinearLayoutManager(context)
-        mStackAdapter?.setData(mStackList)
 
         // 重启
         binding.llReboot.setOnClickListener {
@@ -329,6 +319,42 @@ class HomeFragment : Fragment() {
             BLEUtils.sendCommand("AT+MQTT_SUB_PUB/WIFI=?\r\n") {
             }
         }
+        // 35 WIFI NTRIP服务器参数
+        binding.llInclude.tvWifintrip.setOnClickListener {
+            cummand = "AT+NTRIPSVR/WIFI=?"
+            BLEUtils.sendCommand("AT+NTRIPSVR/WIFI=?\r\n") {
+            }
+        }
+        // 36 WIFI模块工作模式
+        binding.llInclude.tvWifintrip.setOnClickListener {
+            cummand = "AT+BLEMODE/WIFI=?"
+            BLEUtils.sendCommand("AT+BLEMODE/WIFI=?\r\n") {
+            }
+        }
+        // 37 WIFI蓝牙名称
+        binding.llInclude.tvWifiname.setOnClickListener {
+            cummand = "AT+BLENAME/WIFI=?"
+            BLEUtils.sendCommand("AT+BLENAME/WIFI=?\r\n") {
+            }
+        }
+        // 38 电台配置
+        binding.llInclude.tvRadiomode.setOnClickListener {
+            cummand = "AT+CONFIG/DT=?"
+            BLEUtils.sendCommand("AT+CONFIG/DT=?\r\n") {
+            }
+        }
+        // 39 电台空中传输速率
+        binding.llInclude.tvRadiomode.setOnClickListener {
+            cummand = "AT+AIR_BAUD/DT=?"
+            BLEUtils.sendCommand("AT+AIR_BAUD/DT=?\r\n") {
+            }
+        }
+        // 39 电台ID配置
+        binding.llInclude.tvRadiomode.setOnClickListener {
+            cummand = "AT+ID/DT=?"
+            BLEUtils.sendCommand("AT+ID/DT=?\r\n") {
+            }
+        }
     }
 
     private fun initData() {
@@ -348,97 +374,147 @@ class HomeFragment : Fragment() {
 //                }
 //            }
             res?.let {
-                val stack = StackBean(cummand, it)
-                mStackAdapter?.addData(stack)
                 BLEUtils.isSuccess = false
 
                 when (cummand) {
                     "AT+VERSION=?" -> {
                         InCludeUtils.seVersion(binding, it)
                     }
+
                     "AT+MEMS=?" -> {
                         InCludeUtils.seMems(binding, it)
                     }
+
                     "AT+ICCID=?" -> {
                         InCludeUtils.seICCID(binding, it)
                     }
+
                     "AT+UART=?" -> {
                         InCludeUtils.seUart(binding, it)
                     }
+
                     "AT+STATUS=?" -> {
                         InCludeUtils.seStatus(binding, it)
                     }
+
                     "AT+STATE=?" -> {
                         InCludeUtils.seState(binding, it)
                     }
+
                     "AT+MEMS_FRE=?" -> {
                         InCludeUtils.seMemsFre(binding, it)
                     }
+
                     "AT+POWER=?" -> {
                         InCludeUtils.sePower(binding, it)
                     }
+
                     "AT+MODE=?" -> {
                         InCludeUtils.seMode(binding, it)
                     }
+
                     "AT+CCLK=?" -> {
                         InCludeUtils.seCclk(binding, it)
                     }
+
                     "AT+CSQ/4G=?" -> {
                         InCludeUtils.seCsq(binding, it)
                     }
+
                     "AT+SOCK/4G=?" -> {
                         InCludeUtils.seSock4(binding, it)
                     }
+
                     "AT+FESLO/4G=?" -> {
                         InCludeUtils.seFeslo(binding, it)
                     }
+
                     "AT+MQTTSVR/4G=?" -> {
                         InCludeUtils.seMqtt(binding, it)
                     }
+
                     "AT+MQTT_SUB/4G=?" -> {
                         InCludeUtils.seMqttTheme(binding, it)
                     }
+
                     "AT+MQTT_PUB/4G=?" -> {
                         InCludeUtils.setPubTheme(binding, it)
                     }
+
                     "AT+MQTT_SERIAL_MODE/4G=?" -> {
                         InCludeUtils.seSerial(binding, it)
                     }
+
                     "AT+MQTT_NTRIPSVR/4G=?" -> {
                         InCludeUtils.setNtrip(binding, it)
                     }
+
                     "AT+FTPSVR/4G=?" -> {
                         InCludeUtils.setFtp(binding, it)
                     }
+
                     "AT+DHCP/NET=?" -> {
                         InCludeUtils.setDhcp(binding, it)
                     }
+
                     "AT+LOCALIP/NET=?" -> {
                         InCludeUtils.setIp(binding, it)
                     }
+
                     "AT+SERVERIP/NET=?" -> {
                         InCludeUtils.seNet(binding, it)
                     }
+
                     "AT+NTRIPSVR/NET=?" -> {
                         InCludeUtils.seServerntrip(binding, it)
                     }
+
                     "AT+RST/WIFI" -> {
                         InCludeUtils.setResetWifi(binding, it)
                     }
+
                     "AT+AP/WIFI=?" -> {
                         InCludeUtils.setApWifi(binding, it)
                     }
+
                     "AT+STA/WIFI=?" -> {
                         InCludeUtils.setStaWifi(binding, it)
                     }
+
                     "AT+SOCK/WIFI=?" -> {
                         InCludeUtils.setUdp(binding, it)
                     }
+
                     "AT+MQTTSVR/WIFI=?" -> {
                         InCludeUtils.setMqttWifi(binding, it)
                     }
+
                     "AT+MQTT_SUB_PUB/WIFI=?" -> {
                         InCludeUtils.setMqttPub(binding, it)
+                    }
+
+                    "AT+NTRIPSVR/WIFI=?" -> {
+                        InCludeUtils.setWifiNtrip(binding, it)
+                    }
+
+                    "AT+BLEMODE/WIFI=?" -> {
+                        InCludeUtils.setWifiMode(binding, it)
+                    }
+
+                    "AT+BLENAME/WIFI=?" -> {
+                        InCludeUtils.setWifiName(binding, it)
+                    }
+
+                    "AT+CONFIG/DT?" -> {
+                        InCludeUtils.setDtMode(binding, it)
+                    }
+
+                    "AT+AIR_BAUD/DT?" -> {
+                        InCludeUtils.setSpeed(binding, it)
+                    }
+
+                    "AT+ID/DT?" -> {
+                        InCludeUtils.setDtId(binding, it)
                     }
                 }
             }

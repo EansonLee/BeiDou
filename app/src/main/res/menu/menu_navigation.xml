@@ -6,15 +6,15 @@
         android:icon="@drawable/menu_main"
         android:title="@string/bottom_name1" />
 
-<!--    <item-->
-<!--        android:id="@+id/menu_project"-->
-<!--        android:icon="@drawable/menu_project"-->
-<!--        android:title="@string/bottom_name2" />-->
+    <item
+        android:id="@+id/menu_project"
+        android:icon="@drawable/menu_project"
+        android:title="@string/bottom_name2" />
 
-<!--    <item-->
-<!--        android:id="@+id/menu_system"-->
-<!--        android:icon="@drawable/menu_tree"-->
-<!--        android:title="@string/bottom_name3" />-->
+    <item
+        android:id="@+id/menu_system"
+        android:icon="@drawable/menu_tree"
+        android:title="@string/bottom_name3" />
 <!--    <item-->
 <!--        android:id="@+id/menu_public"-->
 <!--        android:icon="@drawable/menu_public"-->

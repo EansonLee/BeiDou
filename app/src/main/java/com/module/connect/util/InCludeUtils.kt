@@ -38,6 +38,26 @@ object InCludeUtils {
         binding.llInclude.etResetWifi.text = str
     }
 
+    fun setWifiMode(binding: FragmentHomeBinding, str: String) {
+        binding.llInclude.etWifimode1.setText(str)
+    }
+
+    fun setWifiName(binding: FragmentHomeBinding, str: String) {
+        binding.llInclude.etWifiname1.setText(str)
+    }
+
+    fun setDtMode(binding: FragmentHomeBinding, str: String) {
+        binding.llInclude.etRadiomode1.setText(str)
+    }
+
+    fun setSpeed(binding: FragmentHomeBinding, str: String) {
+        binding.llInclude.etRadiospeed1.setText(str)
+    }
+
+    fun setDtId(binding: FragmentHomeBinding, str: String) {
+        binding.llInclude.etRadioid1.setText(str)
+    }
+
     fun seMems(binding: FragmentHomeBinding, str: String) {
         val res = str.substringAfter("=").split(",")
         binding.llInclude.etMems1.setText(res[0])
@@ -216,6 +236,16 @@ object InCludeUtils {
         binding.llInclude.etMqttwifitheme1.setText(res[0])
         binding.llInclude.etMqttwifitheme2.setText(res[1])
     }
+
+    fun setWifiNtrip(binding: FragmentHomeBinding, str: String) {
+        val res = str.substringAfter("=").split(",")
+        binding.llInclude.etWifintrip1.setText(res[0])
+        binding.llInclude.etWifintrip2.setText(res[1])
+        binding.llInclude.etWifintrip3.setText(res[2])
+        binding.llInclude.etWifintrip4.setText(res[3])
+        binding.llInclude.etWifintrip5.setText(res[4])
+    }
+
 
     fun clickUart(binding: FragmentHomeBinding) {
         if (isUratNotNull(binding)) {

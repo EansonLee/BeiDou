@@ -8,6 +8,8 @@ import androidx.viewpager2.widget.ViewPager2
 import com.blankj.utilcode.util.Utils
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
 import com.module.connect.fragment.HomeFragment
+import com.module.connect.fragment.SettingFragment
+import com.module.connect.fragment.StackFragment
 import com.module.connect.util.SettingUtil
 
 
@@ -22,12 +24,14 @@ fun ViewPager2.initMain(fragment: Fragment): ViewPager2 {
                 0 -> {
                     return HomeFragment()
                 }
-//                1 -> {
-//                    return ProjectFragment()
-//                }
-//                2 -> {
-//                    return TreeArrFragment()
-//                }
+
+                1 -> {
+                    return SettingFragment()
+                }
+
+                2 -> {
+                    return StackFragment()
+                }
 //                3 -> {
 //                    return PublicNumberFragment()
 //                }
@@ -39,7 +43,8 @@ fun ViewPager2.initMain(fragment: Fragment): ViewPager2 {
                 }
             }
         }
-        override fun getItemCount() = 1
+
+        override fun getItemCount() = 3
     }
     return this
 }
@@ -63,11 +68,12 @@ fun BottomNavigationViewEx.init(navigationItemSelectedAction: (Int) -> Unit): Bo
  * @receiver BottomNavigationViewEx
  * @param ids IntArray
  */
-fun BottomNavigationViewEx.interceptLongClick(vararg ids:Int) {
+fun BottomNavigationViewEx.interceptLongClick(vararg ids: Int) {
     val bottomNavigationMenuView: ViewGroup = (this.getChildAt(0) as ViewGroup)
-    for (index in ids.indices){
-        bottomNavigationMenuView.getChildAt(index).findViewById<View>(ids[index]).setOnLongClickListener {
-            true
-        }
+    for (index in ids.indices) {
+        bottomNavigationMenuView.getChildAt(index).findViewById<View>(ids[index])
+            .setOnLongClickListener {
+                true
+            }
     }
 }

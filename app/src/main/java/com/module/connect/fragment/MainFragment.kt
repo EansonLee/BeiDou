@@ -42,6 +42,8 @@ class MainFragment : Fragment() {
         mainBottom?.init {
             when (it) {
                 R.id.menu_main -> mainViewpager?.setCurrentItem(0, false)
+                R.id.menu_project -> mainViewpager?.setCurrentItem(1, false)
+                R.id.menu_system -> mainViewpager?.setCurrentItem(2, false)
             }
         }
         mainBottom?.interceptLongClick(R.id.menu_main)

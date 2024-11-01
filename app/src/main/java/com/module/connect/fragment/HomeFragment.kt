@@ -301,19 +301,21 @@ class HomeFragment : Fragment() {
                     }
                 }*/
             }
+            itemAnimator = null
+            animation = null
             layoutManager = LinearLayoutManager(requireContext())
             adapter = mCommandAdapter
-            setItemViewCacheSize(5)
+            setItemViewCacheSize(30)
             isDrawingCacheEnabled = true
             drawingCacheQuality = View.DRAWING_CACHE_QUALITY_HIGH
             val pool = recycledViewPool
-            pool.setMaxRecycledViews(STYLE_ONE,10)
-            pool.setMaxRecycledViews(STYLE_TWO,10)
-            pool.setMaxRecycledViews(STYLE_THIRD,10)
-            pool.setMaxRecycledViews(STYLE_FOUR,10)
-            pool.setMaxRecycledViews(STYLE_FIVE,10)
-            pool.setMaxRecycledViews(STYLE_SIX,10)
-            pool.setMaxRecycledViews(STYLE_SEVEN,10)
+            pool.setMaxRecycledViews(STYLE_ONE,30)
+            pool.setMaxRecycledViews(STYLE_TWO,30)
+            pool.setMaxRecycledViews(STYLE_THIRD,30)
+            pool.setMaxRecycledViews(STYLE_FOUR,30)
+            pool.setMaxRecycledViews(STYLE_FIVE,30)
+            pool.setMaxRecycledViews(STYLE_SIX,30)
+            pool.setMaxRecycledViews(STYLE_SEVEN,30)
             setRecycledViewPool(pool)
         }
 

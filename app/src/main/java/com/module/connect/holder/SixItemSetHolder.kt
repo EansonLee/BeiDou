@@ -3,11 +3,11 @@ package com.module.connect.holder
 import android.text.TextUtils
 import androidx.recyclerview.widget.RecyclerView
 import com.module.connect.bean.CommandBean
-import com.module.connect.databinding.ItemSixBinding
+import com.module.connect.databinding.ItemSixSetBinding
 import com.module.connect.util.InCludeUtils
 import com.module.connect.util.ToastUtils
 
-class SixItemSetHolder(private val binding: ItemSixBinding) :
+class SixItemSetHolder(private val binding: ItemSixSetBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
     fun render(bean: CommandBean, itemClick: (CommandBean) -> Unit) {

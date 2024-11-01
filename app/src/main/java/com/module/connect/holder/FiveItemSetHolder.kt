@@ -3,11 +3,11 @@ package com.module.connect.holder
 import android.text.TextUtils
 import androidx.recyclerview.widget.RecyclerView
 import com.module.connect.bean.CommandBean
-import com.module.connect.databinding.ItemFiveBinding
+import com.module.connect.databinding.ItemFiveSetBinding
 import com.module.connect.util.InCludeUtils
 import com.module.connect.util.ToastUtils
 
-class FiveItemSetHolder(private val binding: ItemFiveBinding) :
+class FiveItemSetHolder(private val binding: ItemFiveSetBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
     fun render(bean: CommandBean, itemClick: (CommandBean) -> Unit) {

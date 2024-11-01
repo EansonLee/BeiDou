@@ -27,21 +27,26 @@ import com.module.connect.holder.SixItemHolder
 import com.module.connect.holder.ThreeItemHolder
 import com.module.connect.holder.TwoItemHolder
 
-class CommandAdapter(private val itemClick: (CommandBean) -> Unit) : ListAdapter<CommandBean, RecyclerView.ViewHolder>(RecordDiffCallback())  {
+class CommandAdapter(private val itemClick: (CommandBean) -> Unit) :
+    ListAdapter<CommandBean, RecyclerView.ViewHolder>(RecordDiffCallback()) {
 
     class RecordDiffCallback : DiffUtil.ItemCallback<CommandBean>() {
 
         override fun areItemsTheSame(oldItem: CommandBean, newItem: CommandBean): Boolean {
-            return oldItem.name == newItem.name
+            return oldItem.style == newItem.style
         }
 
         override fun areContentsTheSame(
             oldItem: CommandBean,
             newItem: CommandBean
         ): Boolean {
-            return oldItem.name == newItem.name
+            return oldItem.name == newItem.name && oldItem.command == newItem.command
         }
 
+    }
+
+    init {
+        setHasStableIds(true)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -77,8 +82,7 @@ class CommandAdapter(private val itemClick: (CommandBean) -> Unit) : ListAdapter
                     false
                 )
             )
-        }
-        else if (viewType == STYLE_FIVE) {
+        } else if (viewType == STYLE_FIVE) {
             FiveItemHolder(
                 ItemFiveBinding.inflate(
                     LayoutInflater.from(parent.context),
@@ -86,8 +90,7 @@ class CommandAdapter(private val itemClick: (CommandBean) -> Unit) : ListAdapter
                     false
                 )
             )
-        }
-        else if (viewType == STYLE_SIX) {
+        } else if (viewType == STYLE_SIX) {
             SixItemHolder(
                 ItemSixBinding.inflate(
                     LayoutInflater.from(parent.context),
@@ -95,8 +98,7 @@ class CommandAdapter(private val itemClick: (CommandBean) -> Unit) : ListAdapter
                     false
                 )
             )
-        }
-        else {
+        } else {
             SevenItemHolder(
                 ItemSevenBinding.inflate(
                     LayoutInflater.from(parent.context),

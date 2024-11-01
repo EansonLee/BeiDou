@@ -57,19 +57,21 @@ class SettingFragment : Fragment() {
                 BLEUtils.sendCommand("${it.command}\r\n") {
                 }
             }
+            itemAnimator = null
+            animation = null
             layoutManager = LinearLayoutManager(requireContext())
             adapter = mSetAdapter
-            setItemViewCacheSize(5)
+            setItemViewCacheSize(2)
             isDrawingCacheEnabled = true
             drawingCacheQuality = DRAWING_CACHE_QUALITY_HIGH
             val pool = recycledViewPool
-            pool.setMaxRecycledViews(STYLE_ONE, 10)
-            pool.setMaxRecycledViews(STYLE_TWO, 10)
-            pool.setMaxRecycledViews(STYLE_THIRD, 10)
-            pool.setMaxRecycledViews(STYLE_FOUR, 10)
-            pool.setMaxRecycledViews(STYLE_FIVE, 10)
-            pool.setMaxRecycledViews(STYLE_SIX, 10)
-            pool.setMaxRecycledViews(STYLE_SEVEN, 10)
+            pool.setMaxRecycledViews(STYLE_ONE, 2)
+            pool.setMaxRecycledViews(STYLE_TWO, 2)
+            pool.setMaxRecycledViews(STYLE_THIRD, 2)
+            pool.setMaxRecycledViews(STYLE_FOUR, 2)
+            pool.setMaxRecycledViews(STYLE_FIVE, 2)
+            pool.setMaxRecycledViews(STYLE_SIX, 2)
+            pool.setMaxRecycledViews(STYLE_SEVEN, 2)
             setRecycledViewPool(pool)
         }
     }

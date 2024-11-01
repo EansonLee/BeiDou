@@ -12,13 +12,13 @@ import com.module.connect.bean.STYLE_ONE
 import com.module.connect.bean.STYLE_SIX
 import com.module.connect.bean.STYLE_THIRD
 import com.module.connect.bean.STYLE_TWO
-import com.module.connect.databinding.ItemFiveBinding
-import com.module.connect.databinding.ItemFourBinding
+import com.module.connect.databinding.ItemFiveSetBinding
+import com.module.connect.databinding.ItemFourSetBinding
 import com.module.connect.databinding.ItemOneSetBinding
-import com.module.connect.databinding.ItemSevenBinding
-import com.module.connect.databinding.ItemSixBinding
-import com.module.connect.databinding.ItemThreeBinding
-import com.module.connect.databinding.ItemTwoBinding
+import com.module.connect.databinding.ItemSevenSetBinding
+import com.module.connect.databinding.ItemSixSetBinding
+import com.module.connect.databinding.ItemThreeSetBinding
+import com.module.connect.databinding.ItemTwoSetBinding
 import com.module.connect.holder.FiveItemSetHolder
 import com.module.connect.holder.FourItemSetHolder
 import com.module.connect.holder.OneItemSetHolder
@@ -33,17 +33,22 @@ class SettingAdapter(private val itemClick: (CommandBean) -> Unit) :
     class RecordDiffCallback : DiffUtil.ItemCallback<CommandBean>() {
 
         override fun areItemsTheSame(oldItem: CommandBean, newItem: CommandBean): Boolean {
-            return oldItem.name == newItem.name
+            return oldItem.style == newItem.style
         }
 
         override fun areContentsTheSame(
             oldItem: CommandBean,
             newItem: CommandBean
         ): Boolean {
-            return oldItem.name == newItem.name
+            return oldItem.name == newItem.name && oldItem.command == newItem.command
         }
 
     }
+
+    init {
+        setHasStableIds(true)
+    }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
@@ -59,7 +64,7 @@ class SettingAdapter(private val itemClick: (CommandBean) -> Unit) :
 
             STYLE_TWO -> {
                 TwoItemSetHolder(
-                    ItemTwoBinding.inflate(
+                    ItemTwoSetBinding.inflate(
                         LayoutInflater.from(parent.context),
                         parent,
                         false
@@ -69,7 +74,7 @@ class SettingAdapter(private val itemClick: (CommandBean) -> Unit) :
 
             STYLE_THIRD -> {
                 ThreeItemSetHolder(
-                    ItemThreeBinding.inflate(
+                    ItemThreeSetBinding.inflate(
                         LayoutInflater.from(parent.context),
                         parent,
                         false
@@ -79,7 +84,7 @@ class SettingAdapter(private val itemClick: (CommandBean) -> Unit) :
 
             STYLE_FOUR -> {
                 FourItemSetHolder(
-                    ItemFourBinding.inflate(
+                    ItemFourSetBinding.inflate(
                         LayoutInflater.from(parent.context),
                         parent,
                         false
@@ -89,7 +94,7 @@ class SettingAdapter(private val itemClick: (CommandBean) -> Unit) :
 
             STYLE_FIVE -> {
                 FiveItemSetHolder(
-                    ItemFiveBinding.inflate(
+                    ItemFiveSetBinding.inflate(
                         LayoutInflater.from(parent.context),
                         parent,
                         false
@@ -99,7 +104,7 @@ class SettingAdapter(private val itemClick: (CommandBean) -> Unit) :
 
             STYLE_SIX -> {
                 SixItemSetHolder(
-                    ItemSixBinding.inflate(
+                    ItemSixSetBinding.inflate(
                         LayoutInflater.from(parent.context),
                         parent,
                         false
@@ -109,7 +114,7 @@ class SettingAdapter(private val itemClick: (CommandBean) -> Unit) :
 
             else -> {
                 SevenItemSetHolder(
-                    ItemSevenBinding.inflate(
+                    ItemSevenSetBinding.inflate(
                         LayoutInflater.from(parent.context),
                         parent,
                         false

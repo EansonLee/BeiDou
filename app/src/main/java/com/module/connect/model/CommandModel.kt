@@ -20,6 +20,9 @@ class CommandModel : ViewModel() {
     private val _commandList: MutableLiveData<List<CommandBean>> = MutableLiveData()
     val commandList: LiveData<List<CommandBean>> = _commandList
 
+    private val _settingList: MutableLiveData<List<CommandBean>> = MutableLiveData()
+    val settingList: LiveData<List<CommandBean>> = _settingList
+
     fun getAllCommand() {
         viewModelScope.launch(Dispatchers.IO) {
             val result = mutableListOf<CommandBean>().apply {
@@ -56,11 +59,11 @@ class CommandModel : ViewModel() {
                 //17
                 add(CommandBean("4G MQTT发布主题", "AT+MQTT_PUB/4G=", "", STYLE_FIVE,"主题1名称","主题2名称","主题3名称","主题4名称","主题5名称","",""))
                 //18
-                add(CommandBean("MQTT 串口模式", "AT+SERIAL_MODE/4G=", "", STYLE_ONE,"","","","","","",""))
+                add(CommandBean("MQTT 串口模式", "AT+MQTT_SERIAL_MODE/4G=", "", STYLE_ONE,"","","","","","",""))
                 //19
                 add(CommandBean("4G NTRIP服务器参数", "AT+NTRIPSVR/4G=", "", STYLE_FIVE,"目标地址","目标地址","用户名","客户密码","挂载点","",""))
                 //20
-                add(CommandBean("4G FTP服务器参数", "AT+4G FTP服务器参数=", "", STYLE_FIVE,"目标地址","目标端口","用户名","密码","文件名","",""))
+                add(CommandBean("4G FTP服务器参数", "AT+FTPSVR/4G=", "", STYLE_FIVE,"目标地址","目标端口","用户名","密码","文件名","",""))
                 //21
                 add(CommandBean("以太网DHCP工作模式", "AT+DHCP/NET=", "", STYLE_ONE,"","","","","","",""))
                 //22
@@ -123,7 +126,7 @@ class CommandModel : ViewModel() {
                 //17
                 add(CommandBean("4G MQTT发布主题", "AT+MQTT_PUB/4G=", "", STYLE_FIVE,"主题1名称","主题2名称","主题3名称","主题4名称","主题5名称","",""))
                 //18
-                add(CommandBean("MQTT 串口模式", "AT+SERIAL_MODE/4G=", "", STYLE_ONE,"","","","","","",""))
+                add(CommandBean("MQTT 串口模式", "AT+MQTT_SERIAL_MODE/4G=", "", STYLE_ONE,"","","","","","",""))
                 //19
                 add(CommandBean("4G NTRIP服务器参数", "AT+NTRIPSVR/4G=", "", STYLE_FIVE,"目标地址","目标地址","用户名","客户密码","挂载点","",""))
                 //20
@@ -174,7 +177,7 @@ class CommandModel : ViewModel() {
                 add(CommandBean("启动升级指令32", "AT+OTA_CRC32=", "", STYLE_ONE,"","","","","","",""))
 
             }
-            _commandList.postValue(result)
+            _settingList.postValue(result)
         }
     }
 }

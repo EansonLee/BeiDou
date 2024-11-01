@@ -76,6 +76,7 @@ class BlueToothListDialog : BaseFragmentDialog<DialogBlueToothListBinding>() {
                         KeyValueUtils.setString(IConsts.KEY_CURRENT_ADDRESS, device.bleAddress)
                         KeyValueUtils.setString(IConsts.KEY_CURRENT_DEVICE, device.bleName)
                         Toast.makeText(Utils.getApp(), "蓝牙已连接", Toast.LENGTH_SHORT).show()
+                        Ble.getInstance<BleDevice>().stopScan()
                     }
                 }
 

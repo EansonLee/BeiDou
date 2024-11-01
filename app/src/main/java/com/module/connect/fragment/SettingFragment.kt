@@ -77,7 +77,7 @@ class SettingFragment : Fragment() {
     }
 
     private fun initData() {
-        viewModel.commandList.observe(viewLifecycleOwner) {
+        viewModel.settingList.observe(viewLifecycleOwner) {
             mList.addAll(it)
             mSetAdapter.submitList(mList)
         }
@@ -87,9 +87,15 @@ class SettingFragment : Fragment() {
 
             res?.let {
                 BLEUtils.isSuccess = false
+                val homCommand = HomeFragment.cummand
+                Log.e("------", "getHome：$homCommand")
                 val index = getItemIndexByName(HomeFragment.cummand)
-                mList[index].res = it
-                mSetAdapter.submitList(mList)
+                Log.e("------", "index：$index")
+                if (index != -1) {
+                    mList[index].res = it
+//                    mSetAdapter.submitList(mList)
+                    mSetAdapter.notifyItemChanged(index)
+                }
             }
         }
     }

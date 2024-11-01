@@ -1,7 +1,6 @@
 package com.module.connect.util
 
 import android.widget.EditText
-import com.module.connect.databinding.FragmentHomeBinding
 
 object InCludeUtils {
 

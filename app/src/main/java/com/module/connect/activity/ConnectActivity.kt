@@ -53,6 +53,6 @@ class ConnectActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        Ble.getInstance<BleDevice>().released()
+//        Ble.getInstance<BleDevice>().released()
     }
 }

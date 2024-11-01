@@ -33,22 +33,17 @@ class SettingAdapter(private val itemClick: (CommandBean) -> Unit) :
     class RecordDiffCallback : DiffUtil.ItemCallback<CommandBean>() {
 
         override fun areItemsTheSame(oldItem: CommandBean, newItem: CommandBean): Boolean {
-            return oldItem.style == newItem.style
+            return oldItem.name == newItem.name
         }
 
         override fun areContentsTheSame(
             oldItem: CommandBean,
             newItem: CommandBean
         ): Boolean {
-            return oldItem.name == newItem.name && oldItem.command == newItem.command
+            return oldItem.name == newItem.name
         }
 
     }
-
-    init {
-        setHasStableIds(true)
-    }
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {

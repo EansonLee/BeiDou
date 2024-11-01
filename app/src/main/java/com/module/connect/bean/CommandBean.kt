@@ -10,7 +10,7 @@ const val STYLE_SEVEN = 7
 
 data class CommandBean(
     val name: String,
-    val command:String,
+    var command:String,
     var res: String,
     val style: Int = STYLE_ONE,
     val tip1: String?,

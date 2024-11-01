@@ -16,7 +16,7 @@ import com.module.connect.util.SettingUtil
 fun ViewPager2.initMain(fragment: Fragment): ViewPager2 {
     //是否可滑动
     this.isUserInputEnabled = false
-    this.offscreenPageLimit = 1
+    this.offscreenPageLimit = 3
     //设置适配器
     adapter = object : FragmentStateAdapter(fragment) {
         override fun createFragment(position: Int): Fragment {

@@ -268,4 +268,8 @@ object InCludeUtils {
         return editTexts.all { it.text?.isNotEmpty() == true }
     }*/
 
+
+    fun areAllEditTextsNotNullOrEmpty(vararg editTexts: EditText): Boolean {
+        return editTexts.all { it.text?.isNotEmpty() == true }
+    }
 }

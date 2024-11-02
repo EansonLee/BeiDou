@@ -10,14 +10,16 @@ class TwoItemHolder(private val binding: ItemTwoBinding) :
 
     fun render(bean: CommandBean, itemClick: (CommandBean) -> Unit) {
         binding.tvName.text = bean.name
-        if (!TextUtils.isEmpty(bean.res)) {
-            val res = bean.res.substringAfter("=").split(",")
-            binding.et1.setText(res[0])
-            binding.et2.setText(res[1])
+        val resList = if (!TextUtils.isEmpty(bean.res)) {
+            bean.res.substringAfter("=").split(",")
         } else {
-            binding.et1.hint = bean.tip1
-            binding.et2.hint = bean.tip2
+            emptyList()
         }
+        binding.et1.text = resList.getOrNull(0) ?: ""
+        binding.et2.text = resList.getOrNull(1) ?: ""
+
+        binding.et1.hint = bean.tip1
+        binding.et2.hint = bean.tip2
         binding.tvBtn.setOnClickListener {
             itemClick.invoke(bean)
         }

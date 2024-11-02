@@ -13,15 +13,16 @@ class TwoItemSetHolder(private val binding: ItemTwoSetBinding) :
     fun render(bean: CommandBean, itemClick: (CommandBean) -> Unit) {
         binding.tvName.text = bean.name
         binding.tvBtn.text = "设置"
-        if (!TextUtils.isEmpty(bean.res)) {
-            val res = bean.res.substringAfter("=").split(",")
-            binding.et1.setText(res[0])
-            binding.et2.setText(res[1])
+        val resList = if (!TextUtils.isEmpty(bean.res)) {
+            bean.res.substringAfter("=").split(",")
         } else {
-            binding.et1.hint = bean.tip1
-            binding.et2.hint = bean.tip2
+            emptyList()
         }
+        binding.et1.setText(resList.getOrNull(0) ?: "")
+        binding.et2.setText(resList.getOrNull(1) ?: "")
 
+        binding.et1.hint = bean.tip1
+        binding.et2.hint = bean.tip2
 
         binding.tvBtn.setOnClickListener {
             if (InCludeUtils.areAllEditTextsNotNullOrEmpty(binding.et1, binding.et2).not()) {

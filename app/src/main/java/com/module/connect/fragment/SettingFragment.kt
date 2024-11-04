@@ -20,6 +20,7 @@ import com.module.connect.bean.STYLE_THIRD
 import com.module.connect.bean.STYLE_TWO
 import com.module.connect.consts.IConsts
 import com.module.connect.databinding.FragmentSettingBinding
+import com.module.connect.dialog.ResultDialog
 import com.module.connect.model.CommandModel
 import com.module.connect.util.BLEUtils
 import com.module.connect.util.LiveDataBus
@@ -52,9 +53,10 @@ class SettingFragment : Fragment() {
 
     private fun initView() {
         with(binding.rvRecv) {
-            mSetAdapter = SettingAdapter {
-                Log.e("------", "set-command：${it.command}")
-                BLEUtils.sendCommand("${it.command}\r\n") {
+            mSetAdapter = SettingAdapter { _, res ->
+                Log.e("------", "set-command：${res}")
+                HomeFragment.SEND_COMMAND = res
+                BLEUtils.sendCommand(res) {
                 }
             }
             itemAnimator = null
@@ -90,11 +92,15 @@ class SettingFragment : Fragment() {
                 val homCommand = HomeFragment.cummand
                 Log.e("------", "getHome：$homCommand")
                 val index = getItemIndexByName(HomeFragment.cummand)
-                Log.e("------", "index：$index")
+//                Log.e("setlist", "index：$index，setList：${mList}")
                 if (index != -1) {
-                    mList[index].res = it
 //                    mSetAdapter.submitList(mList)
-                    mSetAdapter.notifyItemChanged(index)
+                    if (res == "OK\r\n") {
+                        ResultDialog.newInstance(childFragmentManager, "设置成功", "请重新查询获得最新结果")
+                    } else {
+                        mList[index].res = it
+                        mSetAdapter.notifyItemChanged(index)
+                    }
                 }
             }
         }

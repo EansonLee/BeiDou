@@ -73,15 +73,17 @@ class StackFragment : Fragment() {
     private fun initData() {
         LiveDataBus.observeString(IConsts.KEY_COMMEND_RES, viewLifecycleOwner) { res ->
             res?.let {
+                var mSendCommand = ""
                 if (isCustom) {
-                    val stack = StackBean(HomeFragment.cummand, it)
-                    mStackAdapter?.addData(stack)
+                    mSendCommand = mCustomCommand
                     isCustom = false
                     mCustomCommand = ""
                 } else {
-                    val stack = StackBean(HomeFragment.cummand, it)
-                    mStackAdapter?.addData(stack)
+                    mSendCommand = HomeFragment.SEND_COMMAND
                 }
+                val stack = StackBean(mSendCommand, it)
+                mStackAdapter?.addData(stack)
+
             }
         }
     }

@@ -52,6 +52,7 @@ class HomeFragment : Fragment() {
         val deviceList = mutableListOf<BleDevice>()
         val devices = mutableListOf<BleDevice>()
         var cummand = ""
+        var SEND_COMMAND = ""
     }
 
     override fun onCreateView(
@@ -88,218 +89,10 @@ class HomeFragment : Fragment() {
         with(binding.rvCommand) {
             mCommandAdapter = CommandAdapter {
                 cummand = it.command
-                Log.e("------", "home-command：$cummand")
+                SEND_COMMAND = "${it.command}?"
+                Log.e("------", "home-command：${it.command}?")
                 BLEUtils.sendCommand("${it.command}?\r\n") {
                 }
-                /* when (it.command) {
-                     "AT+VERSION=?" -> {
- //                        cummand = "AT+VERSION=?"
-                         BLEUtils.sendCommand("AT+VERSION=?\r\n") {
-                         }
-                     }
-
-                     "AT+MEMS=?" -> {
- //                        cummand = "AT+MEMS=?"
-                         BLEUtils.sendCommand("AT+MEMS=?\r\n") {
-                         }
-                     }
-
-                     "AT+ICCID=?" -> {
- //                        cummand = "AT+ICCID=?"
-                         BLEUtils.sendCommand("AT+ICCID=?\r\n") {
-                         }
-                     }
-
-                     "AT+UART=?" -> {
- //                        cummand = "AT+UART=?"
-                         BLEUtils.sendCommand("AT+UART=?\r\n") {
-                         }
-                     }
-
-                     "AT+STATUS=?" -> {
- //                        cummand = "AT+STATUS=?"
-                         BLEUtils.sendCommand("AT+STATUS=?\r\n") {
-                         }
-                     }
-
-                     "AT+STATE=?" -> {
- //                        cummand = "AT+STATE=?"
-                         BLEUtils.sendCommand("AT+STATE=?\r\n") {
-                         }
-                     }
-
-                     "AT+MEMS_FRE=?" -> {
- //                        cummand = "AT+MEMS_FRE=?"
-                         BLEUtils.sendCommand("AT+MEMS_FRE=?\r\n") {
-                         }
-                     }
-
-                     "AT+POWER=?" -> {
- //                        cummand = "AT+POWER=?"
-                         BLEUtils.sendCommand("AT+POWER=?\r\n") {
-                         }
-                     }
-
-                     "AT+MODE=?" -> {
- //                        cummand = "AT+MODE=?"
-                         BLEUtils.sendCommand("AT+MODE=?\r\n") {
-                         }
-                     }
-
-                     "AT+CCLK=?" -> {
- //                        cummand = "AT+CCLK=?"
-                         BLEUtils.sendCommand("AT+CCLK=?\r\n") {
-                         }
-                     }
-
-                     "AT+CSQ/4G=?" -> {
- //                        cummand = "AT+CSQ/4G=?"
-                         BLEUtils.sendCommand("AT+CSQ/4G=?\r\n") {
-                         }
-                     }
-
-                     "AT+SOCK/4G=?" -> {
- //                        cummand = "AT+SOCK/4G=?"
-                         BLEUtils.sendCommand("AT+SOCK/4G=?\r\n") {
-                         }
-                     }
-
-                     "AT+FESLO/4G=?" -> {
- //                        cummand = "AT+FESLO/4G=?"
-                         BLEUtils.sendCommand("AT+FESLO/4G=?\r\n") {
-                         }
-                     }
-
-                     "AT+MQTTSVR/4G=?" -> {
- //                        cummand = "AT+MQTTSVR/4G=?"
-                         BLEUtils.sendCommand("AT+MQTTSVR/4G=?\r\n") {
-                         }
-                     }
-
-                     "AT+MQTT_SUB/4G=?" -> {
- //                        cummand = "AT+MQTT_SUB/4G=?"
-                         BLEUtils.sendCommand("AT+MQTT_SUB/4G=?\r\n") {
-                         }
-                     }
-
-                     "AT+MQTT_PUB/4G=?" -> {
- //                        cummand = "AT+MQTT_PUB/4G=?"
-                         BLEUtils.sendCommand("AT+MQTT_PUB/4G=?\r\n") {
-                         }
-                     }
-
-                     "AT+MQTT_SERIAL_MODE/4G=?" -> {
- //                        cummand = "AT+MQTT_SERIAL_MODE/4G=?"
-                         BLEUtils.sendCommand("AT+MQTT_SERIAL_MODE/4G=?\r\n") {
-                         }
-                     }
-
-                     "AT+MQTT_NTRIPSVR/4G=?" -> {
- //                        cummand = "AT+NTRIPSVR/4G=?"
-                         BLEUtils.sendCommand("AT+NTRIPSVR/4G=?\r\n") {
-                         }
-                     }
-
-                     "AT+FTPSVR/4G=?" -> {
- //                        cummand = "AT+FTPSVR/4G=?"
-                         BLEUtils.sendCommand("AT+FTPSVR/4G=?\r\n") {
-                         }
-                     }
-
-                     "AT+DHCP/NET=?" -> {
- //                        cummand = "AT+DHCP/NET=?"
-                         BLEUtils.sendCommand("AT+DHCP/NET=?\r\n") {
-                         }
-                     }
-
-                     "AT+LOCALIP/NET=?" -> {
- //                        cummand = "AT+LOCALIP/NET=?"
-                         BLEUtils.sendCommand("AT+LOCALIP/NET=?\r\n") {
-                         }
-                     }
-
-                     "AT+SERVERIP/NET=?" -> {
- //                        cummand = "AT+SERVERIP/NET=?"
-                         BLEUtils.sendCommand("AT+SERVERIP/NET=?\r\n") {
-                         }
-                     }
-
-                     "AT+NTRIPSVR/NET=?" -> {
- //                        cummand = "AT+NTRIPSVR/NET=?"
-                         BLEUtils.sendCommand("AT+NTRIPSVR/NET=?\r\n") {
-                         }
-                     }
-
- //                    "AT+RST/WIFI" -> {
- //                        InCludeUtils.setResetWifi(binding, it)
- //                    }
-
-                     "AT+AP/WIFI=?" -> {
- //                        cummand = "AT+AP/WIFI=?"
-                         BLEUtils.sendCommand("AT+AP/WIFI=?\r\n") {
-                         }
-                     }
-
-                     "AT+STA/WIFI=?" -> {
- //                        cummand = "AT+STA/WIFI=?"
-                         BLEUtils.sendCommand("AT+STA/WIFI=?\r\n") {
-                         }
-                     }
-
-                     "AT+SOCK/WIFI=?" -> {
- //                        cummand = "AT+SOCK/WIFI=?"
-                         BLEUtils.sendCommand("AT+SOCK/WIFI=?\r\n") {
-                         }
-                     }
-
-                     "AT+MQTTSVR/WIFI=?" -> {
- //                        cummand = "AT+MQTTSVR/WIFI=?"
-                         BLEUtils.sendCommand("AT+MQTTSVR/WIFI=?\r\n") {
-                         }
-                     }
-
-                     "AT+MQTT_SUB_PUB/WIFI=?" -> {
- //                        cummand = "AT+MQTT_SUB_PUB/WIFI=?"
-                         BLEUtils.sendCommand("AT+MQTT_SUB_PUB/WIFI=?\r\n") {
-                         }
-                     }
-
-                     "AT+NTRIPSVR/WIFI=?" -> {
- //                        cummand = "AT+NTRIPSVR/WIFI=?"
-                         BLEUtils.sendCommand("AT+NTRIPSVR/WIFI=?\r\n") {
-                         }
-                     }
-
-                     "AT+BLEMODE/WIFI=?" -> {
- //                        cummand = "AT+BLEMODE/WIFI=?"
-                         BLEUtils.sendCommand("AT+BLEMODE/WIFI=?\r\n") {
-                         }
-                     }
-
-                     "AT+BLENAME/WIFI=?" -> {
- //                        cummand = "AT+BLENAME/WIFI=?"
-                         BLEUtils.sendCommand("AT+BLENAME/WIFI=?\r\n") {
-                         }
-                     }
-
-                     "AT+CONFIG/DT?" -> {
- //                        cummand = "AT+CONFIG/DT=?"
-                         BLEUtils.sendCommand("AT+CONFIG/DT=?\r\n") {
-                         }
-                     }
-
-                     "AT+AIR_BAUD/DT?" -> {
- //                        cummand = "AT+AIR_BAUD/DT=?"
-                         BLEUtils.sendCommand("AT+AIR_BAUD/DT=?\r\n") {
-                         }
-                     }
-
-                     "AT+ID/DT?" -> {
- //                        cummand = "AT+ID/DT=?"
-                         BLEUtils.sendCommand("AT+ID/DT=?\r\n") {
-                         }
-                     }
-                 }*/
             }
             itemAnimator = null
             animation = null
@@ -322,6 +115,7 @@ class HomeFragment : Fragment() {
         // 重启
         binding.llReboot.setOnClickListener {
             cummand = "AT+REBOOT"
+            SEND_COMMAND = cummand
             BLEUtils.sendCommand("AT+REBOOT=?\r\n") {
                 BLEUtils.isConnected = false
                 LiveDataBus.postString(IConsts.KEY_COMMEND_RES, "发送成功")
@@ -330,6 +124,7 @@ class HomeFragment : Fragment() {
         // 恢复出厂
         binding.llClear.setOnClickListener {
             cummand = "AT+CLEAR"
+            SEND_COMMAND = cummand
             BLEUtils.sendCommand("AT+CLEAR\r\n") {
                 BLEUtils.isConnected = false
                 LiveDataBus.postString(IConsts.KEY_COMMEND_RES, "发送成功")
@@ -339,6 +134,7 @@ class HomeFragment : Fragment() {
         // 保存
         binding.llSave.setOnClickListener {
             cummand = "AT+SAVE"
+            SEND_COMMAND = cummand
             BLEUtils.sendCommand("AT+SAVE\r\n") {
                 BLEUtils.isConnected = false
                 LiveDataBus.postString(IConsts.KEY_COMMEND_RES, "发送成功")
@@ -399,21 +195,15 @@ class HomeFragment : Fragment() {
 
 
         LiveDataBus.observeString(IConsts.KEY_COMMEND_RES, viewLifecycleOwner) { res ->
-//            res?.let {
-//                if (BLEUtils.isSuccess) {
-//                    ResultDialog.newInstance(childFragmentManager, it, "")
-//                }
-//            }
             res?.let {
                 BLEUtils.isSuccess = false
                 val index = getItemIndexByName(cummand)
                 Log.e("------", "Home index：$index")
                 if (index != -1) {
-                    mList[index].res = it.replace("\r", "").replace("\n", "")
-//                    mList[index].res = "yjkj_thinker"
-//                    Log.e("-----", mList.toString())
-//                    mCommandAdapter.submitList(mList)
-                    mCommandAdapter.notifyItemChanged(index)
+                    if (res != "OK\r\n") {
+                        mList[index].res = it.replace("\r", "").replace("\n", "")
+                        mCommandAdapter.notifyItemChanged(index)
+                    }
                 }
             }
         }

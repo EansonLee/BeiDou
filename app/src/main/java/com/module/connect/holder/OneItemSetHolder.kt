@@ -10,7 +10,7 @@ import com.module.connect.util.ToastUtils
 class OneItemSetHolder(private val binding: ItemOneSetBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
-    fun render(bean: CommandBean, itemClick: (CommandBean) -> Unit) {
+    fun render(bean: CommandBean, itemClick: (CommandBean, String) -> Unit) {
         binding.tvName.text = bean.name
         binding.tvBtn.text = "设置"
 
@@ -20,6 +20,8 @@ class OneItemSetHolder(private val binding: ItemOneSetBinding) :
             binding.etRes.visibility = View.VISIBLE
         }
 
+        binding.etRes.setText(bean.res)
+
         binding.tvBtn.setOnClickListener {
             if (bean.command != "AT+OTA_UPDATE" && bean.command != "AT+OTA/4G" && InCludeUtils.areAllEditTextsNotNullOrEmpty(
                     binding.etRes
@@ -28,9 +30,8 @@ class OneItemSetHolder(private val binding: ItemOneSetBinding) :
                 ToastUtils.show("设置指令不能为空")
                 return@setOnClickListener
             }
-            bean.command = bean.command + binding.etRes.text
-
-            itemClick.invoke(bean)
+            val res = bean.command + binding.etRes.text
+            itemClick.invoke(bean, res)
         }
     }
 }

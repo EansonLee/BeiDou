@@ -10,7 +10,7 @@ import com.module.connect.util.ToastUtils
 class TwoItemSetHolder(private val binding: ItemTwoSetBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
-    fun render(bean: CommandBean, itemClick: (CommandBean) -> Unit) {
+    fun render(bean: CommandBean, itemClick: (CommandBean, String) -> Unit) {
         binding.tvName.text = bean.name
         binding.tvBtn.text = "设置"
         val resList = if (!TextUtils.isEmpty(bean.res)) {
@@ -29,8 +29,8 @@ class TwoItemSetHolder(private val binding: ItemTwoSetBinding) :
                 ToastUtils.show("设置指令不能为空")
                 return@setOnClickListener
             }
-            bean.command = "${bean.command + binding.et1.text},${binding.et2.text}"
-            itemClick.invoke(bean)
+            val res = "${bean.command + binding.et1.text},${binding.et2.text}"
+            itemClick.invoke(bean, res)
         }
     }
 }

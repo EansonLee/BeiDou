@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentManager
 import com.module.connect.databinding.DialogResultBinding
 import com.module.connect.ext.makeArguments
 import com.module.connect.ext.params
+import com.module.connect.fragment.HomeFragment
 import com.module.connect.util.BLEUtils
 
 class ResultDialog : BaseFragmentDialog<DialogResultBinding>() {
@@ -46,7 +47,7 @@ class ResultDialog : BaseFragmentDialog<DialogResultBinding>() {
             binding.tvTips.text = tip
         }
         binding.tvResult.text = res
-        binding.tvSend.text = BLEUtils.currentCommand
+        binding.tvSend.text = HomeFragment.SEND_COMMAND
     }
 
     override fun initData() {

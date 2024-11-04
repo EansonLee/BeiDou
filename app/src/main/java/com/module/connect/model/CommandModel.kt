@@ -106,9 +106,9 @@ class CommandModel : ViewModel() {
                 //2
                 add(CommandBean("各模块波特率", "AT+UART=", "", STYLE_SIX,"MCU","MCU-k803","UM980","4G","WIF","WIF",""))
                 //3
-                add(CommandBean("设备连接状态", "AT+STATUS=", "", STYLE_SIX,"定位","4GA连接","4GB连接","SocketA连接","SocketB连接","WIFI-STA-Socket",""))
+//                add(CommandBean("设备连接状态", "AT+STATUS=", "", STYLE_SIX,"定位","4GA连接","4GB连接","SocketA连接","SocketB连接","WIFI-STA-Socket",""))
                 //4
-                add(CommandBean("设备工作状态", "AT+STATE=", "", STYLE_FIVE,"输入电压","电池电压","工作电流","工作温度","工作湿度","",""))
+//                add(CommandBean("设备工作状态", "AT+STATE=", "", STYLE_FIVE,"输入电压","电池电压","工作电流","工作温度","工作湿度","",""))
                 //7
                 add(CommandBean("MEMS数据上报频率", "AT+MEMS_FRE=", "", STYLE_ONE,"","","","","","",""))
                 //8

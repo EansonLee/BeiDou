@@ -27,7 +27,7 @@ import com.module.connect.holder.SixItemSetHolder
 import com.module.connect.holder.ThreeItemSetHolder
 import com.module.connect.holder.TwoItemSetHolder
 
-class SettingAdapter(private val itemClick: (CommandBean) -> Unit) :
+class SettingAdapter(private val itemClick: (CommandBean, String) -> Unit) :
     ListAdapter<CommandBean, RecyclerView.ViewHolder>(RecordDiffCallback()) {
 
     class RecordDiffCallback : DiffUtil.ItemCallback<CommandBean>() {

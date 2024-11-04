@@ -121,7 +121,7 @@ class BlueToothListDialog : BaseFragmentDialog<DialogBlueToothListBinding>() {
                                 }
                                 isFirstDataReceived = false
                                 lifecycleScope.launch {
-                                    delay(300)
+                                    delay(800)
                                     val finalResult =BLEUtils.byteArrayToAsciiString(byteArrayOutputStream.toByteArray())
                                     Log.e("-------", "Final result: $finalResult")
                                     LiveDataBus.postString(IConsts.KEY_COMMEND_RES, finalResult)

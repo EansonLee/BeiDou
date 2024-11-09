@@ -1,11 +1,13 @@
 package com.module.connect.holder
 
+import android.text.TextUtils
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.module.connect.bean.CommandBean
 import com.module.connect.databinding.ItemOneSetBinding
 import com.module.connect.util.InCludeUtils
 import com.module.connect.util.ToastUtils
+import com.module.connect.util.singleClick
 
 class OneItemSetHolder(private val binding: ItemOneSetBinding) :
     RecyclerView.ViewHolder(binding.root) {
@@ -19,19 +21,22 @@ class OneItemSetHolder(private val binding: ItemOneSetBinding) :
         }else {
             binding.etRes.visibility = View.VISIBLE
         }
+        if (!TextUtils.isEmpty(bean.res)) {
+            binding.etRes.setText("")
+            val res = bean.res.substringAfter("=", null.toString())
+            binding.etRes.setText(res)
+        }
 
-        binding.etRes.setText(bean.res)
-
-        binding.tvBtn.setOnClickListener {
+        binding.tvBtn.singleClick({
             if (bean.command != "AT+OTA_UPDATE" && bean.command != "AT+OTA/4G" && InCludeUtils.areAllEditTextsNotNullOrEmpty(
                     binding.etRes
                 ).not()
             ) {
                 ToastUtils.show("设置指令不能为空")
-                return@setOnClickListener
+                return@singleClick
             }
             val res = bean.command + binding.etRes.text
             itemClick.invoke(bean, res)
-        }
+        })
     }
 }

@@ -85,7 +85,7 @@ class CommandModel : ViewModel() {
                 //30
                 add(CommandBean("WIFI NTRIP服务器参数", "AT+NTRIPSVR/WIFI=", "", STYLE_FIVE,"目标地址","目标地址","用户名","密码","挂载点","",""))
                 //31
-                add(CommandBean("WIFI模块工作模式", "AT+BLEMODE/WIFI=", "", STYLE_ONE,"","","","","","",""))
+                add(CommandBean("WIFI模块蓝牙工作模式", "AT+BLEMODE/WIFI=", "", STYLE_ONE,"","","","","","",""))
                 //32
                 add(CommandBean("WIFI蓝牙名称", "AT+BLENAME/WIFI=", "", STYLE_ONE,"","","","","","",""))
                 //33
@@ -156,7 +156,7 @@ class CommandModel : ViewModel() {
                 //30
                 add(CommandBean("WIFI NTRIP服务器参数", "AT+NTRIPSVR/WIFI=", "", STYLE_FIVE,"目标地址","目标地址","用户名","密码","挂载点","",""))
                 //31
-                add(CommandBean("WIFI模块工作模式", "AT+BLEMODE/WIFI=", "", STYLE_ONE,"","","","","","",""))
+                add(CommandBean("WIFI模块蓝牙工作模式", "AT+BLEMODE/WIFI=", "", STYLE_ONE,"","","","","","",""))
                 //32
                 add(CommandBean("WIFI蓝牙名称", "AT+BLENAME/WIFI=", "", STYLE_ONE,"","","","","","",""))
                 //33

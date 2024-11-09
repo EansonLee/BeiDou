@@ -29,6 +29,8 @@
         <activity
             android:name=".activity.ConnectActivity"
             android:exported="true"
+            android:windowSoftInputMode="adjustPan"
+            android:hardwareAccelerated="true"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

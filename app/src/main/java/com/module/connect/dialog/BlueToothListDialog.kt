@@ -89,32 +89,7 @@ class BlueToothListDialog : BaseFragmentDialog<DialogBlueToothListBinding>() {
                                 device: BleDevice?,
                                 characteristic: BluetoothGattCharacteristic
                             ) {
-                                val uuid = characteristic.uuid
                                 val newData = characteristic.value
-//                                Log.e("-------", "onChanged==uuid:$uuid")
-//
-//                                // 如果还没有接收到第一条数据，直接保存第一条结果
-//                                if (!isFirstDataReceived) {
-//                                    byteArrayOutputStream.write(newData)
-//                                    isFirstDataReceived = true
-//                                } else {
-//                                    byteArrayOutputStream.write(newData)
-//
-//                                    // 获取当前时间
-//                                    val currentTime = System.currentTimeMillis()
-//
-//                                    // 检查是否到达一定的时间间隔，比如1000ms
-//                                    if (currentTime - lastNotifyTime >= 1000) {
-//                                        val finalResult =BLEUtils.byteArrayToAsciiString(byteArrayOutputStream.toByteArray())
-//
-//                                        // 清空 StringBuilder 为下一轮累积做准备
-//                                        BLEUtils.byteArrayToAsciiString(byteArrayOutputStream.toByteArray())
-//                                        lastNotifyTime = currentTime
-//
-//                                        Log.e("-------", "Final result: $finalResult")
-//                                        LiveDataBus.postString(IConsts.KEY_COMMEND_RES, finalResult)
-//                                    }
-//                                }
                                 byteArrayOutputStream.write(newData)
                                 if(!isFirstDataReceived) {
                                     return

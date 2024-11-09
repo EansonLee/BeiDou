@@ -1,16 +1,12 @@
 package com.module.connect.activity
 
-import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
-import cn.com.heaton.blelibrary.ble.Ble
-import cn.com.heaton.blelibrary.ble.model.BleDevice
 import com.blankj.utilcode.util.BarUtils
-import com.blankj.utilcode.util.ToastUtils
 import com.blankj.utilcode.util.Utils
 import com.module.connect.R
 import com.module.connect.databinding.ActivityConnectBinding
@@ -40,7 +36,8 @@ class ConnectActivity : AppCompatActivity() {
                 } else {
                     //是主页
                     if (System.currentTimeMillis() - exitTime > 2000) {
-                        Toast.makeText(Utils.getApp(), "再按一次退出程序", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(Utils.getApp(), "再按一次退出程序", Toast.LENGTH_SHORT)
+                            .show()
                         exitTime = System.currentTimeMillis()
                     } else {
                         finish()

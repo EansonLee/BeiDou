@@ -2,6 +2,7 @@ package com.module.connect.fragment
 
 import BluetoothHelper
 import android.annotation.SuppressLint
+import android.app.ProgressDialog
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
@@ -48,6 +49,8 @@ class HomeFragment : Fragment() {
 
     private val viewModel: CommandModel by viewModels()
 
+    private var progressDialog: ProgressDialog? = null
+
     companion object {
         val deviceList = mutableListOf<BleDevice>()
         val devices = mutableListOf<BleDevice>()
@@ -91,6 +94,7 @@ class HomeFragment : Fragment() {
                 cummand = it.command
                 SEND_COMMAND = "${it.command}?"
                 Log.e("------", "home-command：${it.command}?")
+                progressDialog = ProgressDialog.show(requireContext(), "指令发送中", "")
                 BLEUtils.sendCommand("${it.command}?\r\n") {
                 }
             }
@@ -117,8 +121,10 @@ class HomeFragment : Fragment() {
             cummand = "AT+REBOOT"
             SEND_COMMAND = cummand
             BLEUtils.sendCommand("AT+REBOOT=?\r\n") {
+                progressDialog = ProgressDialog.show(requireContext(), "指令发送中", "")
                 BLEUtils.isConnected = false
                 LiveDataBus.postString(IConsts.KEY_COMMEND_RES, "发送成功")
+                progressDialog?.dismiss()
             }
         }
         // 恢复出厂
@@ -126,8 +132,10 @@ class HomeFragment : Fragment() {
             cummand = "AT+CLEAR"
             SEND_COMMAND = cummand
             BLEUtils.sendCommand("AT+CLEAR\r\n") {
+                progressDialog = ProgressDialog.show(requireContext(), "指令发送中", "")
                 BLEUtils.isConnected = false
                 LiveDataBus.postString(IConsts.KEY_COMMEND_RES, "发送成功")
+                progressDialog?.dismiss()
             }
         }
 
@@ -136,8 +144,10 @@ class HomeFragment : Fragment() {
             cummand = "AT+SAVE"
             SEND_COMMAND = cummand
             BLEUtils.sendCommand("AT+SAVE\r\n") {
+                progressDialog = ProgressDialog.show(requireContext(), "指令发送中", "")
                 BLEUtils.isConnected = false
                 LiveDataBus.postString(IConsts.KEY_COMMEND_RES, "发送成功")
+                progressDialog?.dismiss()
             }
         }
 
@@ -197,12 +207,14 @@ class HomeFragment : Fragment() {
         LiveDataBus.observeString(IConsts.KEY_COMMEND_RES, viewLifecycleOwner) { res ->
             res?.let {
                 BLEUtils.isSuccess = false
+                SEND_COMMAND = ""
                 val index = getItemIndexByName(cummand)
                 Log.e("------", "Home index：$index")
                 if (index != -1) {
                     if (res != "OK\r\n") {
                         mList[index].res = it.replace("\r", "").replace("\n", "")
                         mCommandAdapter.notifyItemChanged(index)
+                        progressDialog?.dismiss()
                     }
                 }
             }

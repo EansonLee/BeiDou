@@ -6,6 +6,7 @@ import com.module.connect.bean.CommandBean
 import com.module.connect.databinding.ItemFiveSetBinding
 import com.module.connect.util.InCludeUtils
 import com.module.connect.util.ToastUtils
+import com.module.connect.util.singleClick
 
 class FiveItemSetHolder(private val binding: ItemFiveSetBinding) :
     RecyclerView.ViewHolder(binding.root) {
@@ -30,7 +31,7 @@ class FiveItemSetHolder(private val binding: ItemFiveSetBinding) :
         binding.et3.hint = bean.tip3
         binding.et4.hint = bean.tip4
         binding.et5.hint = bean.tip5
-        binding.tvBtn.setOnClickListener {
+        binding.tvBtn.singleClick({
             if (InCludeUtils.areAllEditTextsNotNullOrEmpty(
                     binding.et1,
                     binding.et2,
@@ -41,12 +42,12 @@ class FiveItemSetHolder(private val binding: ItemFiveSetBinding) :
                     .not()
             ) {
                 ToastUtils.show("设置指令不能为空")
-                return@setOnClickListener
+                return@singleClick
             }
             val res =
                 "${bean.command + binding.et1.text},${binding.et2.text},${binding.et3.text}," +
                         "${binding.et4.text},${binding.et5.text}"
             itemClick.invoke(bean, res)
-        }
+        })
     }
 }

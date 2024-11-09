@@ -4,6 +4,7 @@ import android.text.TextUtils
 import androidx.recyclerview.widget.RecyclerView
 import com.module.connect.bean.CommandBean
 import com.module.connect.databinding.ItemFourBinding
+import com.module.connect.util.singleClick
 
 class FourItemHolder(private val binding: ItemFourBinding) :
     RecyclerView.ViewHolder(binding.root) {
@@ -25,8 +26,8 @@ class FourItemHolder(private val binding: ItemFourBinding) :
         binding.et3.hint = bean.tip3
         binding.et4.hint = bean.tip4
 
-        binding.tvBtn.setOnClickListener {
+        binding.tvBtn.singleClick({
             itemClick.invoke(bean)
-        }
+        })
     }
 }

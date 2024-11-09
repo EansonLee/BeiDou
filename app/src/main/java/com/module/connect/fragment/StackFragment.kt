@@ -1,5 +1,6 @@
 package com.module.connect.fragment
 
+import android.app.ProgressDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -24,6 +25,7 @@ class StackFragment : Fragment() {
     private var mStackList = mutableListOf<StackBean>()
     private var isCustom = false
     private var mCustomCommand = ""
+    private var progressDialog: ProgressDialog? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -59,10 +61,12 @@ class StackFragment : Fragment() {
                 return@setOnClickListener
             }
             isCustom = true
+            progressDialog = ProgressDialog.show(requireContext(), "指令发送中", "")
             BLEUtils.sendCommand("${mCustomCommand}\r\n") {
 //                || mCustomCommand == "AT+OTA/4G"
 //                || mCustomCommand == "AT+OTA_UPDATE"
                 if (mCustomCommand == "AT+REBOOT" || mCustomCommand == "AT+CLEAR" || mCustomCommand == "AT+SAVE") {
+                    progressDialog?.dismiss()
                     BLEUtils.isConnected = false
                     LiveDataBus.postString(IConsts.KEY_COMMEND_RES, "发送成功")
                 }
@@ -83,7 +87,7 @@ class StackFragment : Fragment() {
                 }
                 val stack = StackBean(mSendCommand, it)
                 mStackAdapter?.addData(stack)
-
+                progressDialog?.dismiss()
             }
         }
     }

@@ -6,6 +6,7 @@ import com.module.connect.bean.CommandBean
 import com.module.connect.databinding.ItemThreeSetBinding
 import com.module.connect.util.InCludeUtils
 import com.module.connect.util.ToastUtils
+import com.module.connect.util.singleClick
 
 class ThreeItemSetHolder(private val binding: ItemThreeSetBinding) :
     RecyclerView.ViewHolder(binding.root) {
@@ -25,16 +26,16 @@ class ThreeItemSetHolder(private val binding: ItemThreeSetBinding) :
         binding.et1.hint = bean.tip1
         binding.et2.hint = bean.tip2
         binding.et3.hint = bean.tip3
-        binding.tvBtn.setOnClickListener {
+        binding.tvBtn.singleClick( {
             if (InCludeUtils.areAllEditTextsNotNullOrEmpty(binding.et1, binding.et2, binding.et3)
                     .not()
             ) {
                 ToastUtils.show("设置指令不能为空")
-                return@setOnClickListener
+                return@singleClick
             }
             val res =
                 "${bean.command + binding.et1.text},${binding.et2.text},${binding.et3.text}"
             itemClick.invoke(bean, res)
-        }
+        })
     }
 }

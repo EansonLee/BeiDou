@@ -1,5 +1,6 @@
 package com.module.connect.fragment
 
+import android.app.ProgressDialog
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -34,6 +35,7 @@ class SettingFragment : Fragment() {
     private val mList = mutableListOf<CommandBean>()
 
     private val viewModel: CommandModel by viewModels()
+    private var progressDialog: ProgressDialog? = null
 
 
     override fun onCreateView(
@@ -56,6 +58,7 @@ class SettingFragment : Fragment() {
             mSetAdapter = SettingAdapter { _, res ->
                 Log.e("------", "set-command：${res}")
                 HomeFragment.SEND_COMMAND = res
+                progressDialog = ProgressDialog.show(requireContext(), "指令发送中", "")
                 BLEUtils.sendCommand(res) {
                 }
             }
@@ -94,6 +97,7 @@ class SettingFragment : Fragment() {
                 val index = getItemIndexByName(HomeFragment.cummand)
 //                Log.e("setlist", "index：$index，setList：${mList}")
                 if (index != -1) {
+                    progressDialog?.dismiss()
 //                    mSetAdapter.submitList(mList)
                     if (res == "OK\r\n") {
                         ResultDialog.newInstance(childFragmentManager, "设置成功", "请重新查询获得最新结果")

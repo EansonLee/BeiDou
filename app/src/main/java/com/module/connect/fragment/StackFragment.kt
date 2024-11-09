@@ -1,6 +1,7 @@
 package com.module.connect.fragment
 
 import android.app.ProgressDialog
+import android.graphics.drawable.Icon
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -75,6 +76,7 @@ class StackFragment : Fragment() {
     }
 
     private fun initData() {
+        var stack : StackBean ?= null
         LiveDataBus.observeString(IConsts.KEY_COMMEND_RES, viewLifecycleOwner) { res ->
             res?.let {
                 var mSendCommand = ""
@@ -85,9 +87,18 @@ class StackFragment : Fragment() {
                 } else {
                     mSendCommand = HomeFragment.SEND_COMMAND
                 }
-                val stack = StackBean(mSendCommand, it)
-                mStackAdapter?.addData(stack)
+                stack = StackBean(mSendCommand, it)
+                stack?.let {stack->
+                    mStackAdapter?.addData(stack)
+                }
                 progressDialog?.dismiss()
+            }
+        }
+
+        LiveDataBus.observeString(IConsts.KEY_COMMEND_FINAL, viewLifecycleOwner) {
+            stack?.res = it
+            stack?.let {
+                mStackAdapter?.notifyDataSetChanged()
             }
         }
     }

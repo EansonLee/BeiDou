@@ -6,4 +6,5 @@ object IConsts {
     val KEY_CURRENT_WRITE_UUID = "key_current_write_uuid"
     val KEY_CURRENT_DEVICE = "key_current_device"
     val KEY_COMMEND_RES = "key_commend_res"
+    val KEY_COMMEND_FINAL = "key_commend_final"
 }

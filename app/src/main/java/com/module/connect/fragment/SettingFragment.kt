@@ -60,6 +60,8 @@ class SettingFragment : Fragment() {
                 HomeFragment.SEND_COMMAND = res
                 progressDialog = ProgressDialog.show(requireContext(), "指令发送中", "")
                 BLEUtils.sendCommand(res) {
+                    LiveDataBus.postString(IConsts.KEY_COMMEND_RES, HomeFragment.SEND_COMMAND)
+                    progressDialog?.dismiss()
                 }
             }
             itemAnimator = null
@@ -88,7 +90,7 @@ class SettingFragment : Fragment() {
         }
         viewModel.getSettingCommand()
 
-        LiveDataBus.observeString(IConsts.KEY_COMMEND_RES, viewLifecycleOwner) { res ->
+        LiveDataBus.observeString(IConsts.KEY_COMMEND_FINAL, viewLifecycleOwner) { res ->
 
             res?.let {
                 BLEUtils.isSuccess = false

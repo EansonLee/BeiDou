@@ -97,7 +97,10 @@ class HomeFragment : Fragment() {
                 progressDialog = ProgressDialog.show(requireContext(), "指令发送中", "")
                 BLEUtils.sendCommand("${it.command}?\r\n") {
                     LiveDataBus.postString(IConsts.KEY_COMMEND_RES, SEND_COMMAND)
-                    progressDialog?.dismiss()
+                    lifecycleScope.launch { 
+                        delay(1000)
+                        progressDialog?.dismiss()
+                    }
                 }
             }
             itemAnimator = null
@@ -126,7 +129,10 @@ class HomeFragment : Fragment() {
                 progressDialog = ProgressDialog.show(requireContext(), "指令发送中", "")
                 BLEUtils.isConnected = false
                 LiveDataBus.postString(IConsts.KEY_COMMEND_RES, "发送成功")
-                progressDialog?.dismiss()
+                lifecycleScope.launch {
+                    delay(1000)
+                    progressDialog?.dismiss()
+                }
             }
         }
         // 恢复出厂
@@ -137,7 +143,10 @@ class HomeFragment : Fragment() {
                 progressDialog = ProgressDialog.show(requireContext(), "指令发送中", "")
                 BLEUtils.isConnected = false
                 LiveDataBus.postString(IConsts.KEY_COMMEND_RES, "发送成功")
-                progressDialog?.dismiss()
+                lifecycleScope.launch {
+                    delay(1000)
+                    progressDialog?.dismiss()
+                }
             }
         }
 
@@ -149,7 +158,10 @@ class HomeFragment : Fragment() {
                 progressDialog = ProgressDialog.show(requireContext(), "指令发送中", "")
                 BLEUtils.isConnected = false
                 LiveDataBus.postString(IConsts.KEY_COMMEND_RES, "发送成功")
-                progressDialog?.dismiss()
+                lifecycleScope.launch {
+                    delay(1000)
+                    progressDialog?.dismiss()
+                }
             }
         }
 

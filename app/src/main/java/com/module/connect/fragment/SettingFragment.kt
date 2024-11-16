@@ -9,6 +9,7 @@ import android.view.View.DRAWING_CACHE_QUALITY_HIGH
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.module.connect.adapter.SettingAdapter
 import com.module.connect.bean.CommandBean
@@ -25,6 +26,8 @@ import com.module.connect.dialog.ResultDialog
 import com.module.connect.model.CommandModel
 import com.module.connect.util.BLEUtils
 import com.module.connect.util.LiveDataBus
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class SettingFragment : Fragment() {
 
@@ -61,7 +64,10 @@ class SettingFragment : Fragment() {
                 progressDialog = ProgressDialog.show(requireContext(), "指令发送中", "")
                 BLEUtils.sendCommand(res) {
                     LiveDataBus.postString(IConsts.KEY_COMMEND_RES, HomeFragment.SEND_COMMAND)
-                    progressDialog?.dismiss()
+                    lifecycleScope.launch {
+                        delay(1000)
+                        progressDialog?.dismiss()
+                    }
                 }
             }
             itemAnimator = null

@@ -63,7 +63,7 @@ class CommandModel : ViewModel() {
                 //19
                 add(CommandBean("4G NTRIP服务器参数", "AT+NTRIPSVR/4G=", "", STYLE_FIVE,"目标地址","目标地址","用户名","客户密码","挂载点","",""))
                 //20
-                add(CommandBean("4G FTP服务器参数", "AT+FTPSVR/4G=", "", STYLE_FIVE,"目标地址","目标端口","用户名","密码","文件名","",""))
+                add(CommandBean("4G FTP服务器参数", "AT+FTPSVR/4G=", "", STYLE_FOUR,"目标地址","目标端口","用户名","文件名","","",""))
                 //21
                 add(CommandBean("以太网DHCP工作模式", "AT+DHCP/NET=", "", STYLE_ONE,"","","","","","",""))
                 //22
@@ -77,7 +77,7 @@ class CommandModel : ViewModel() {
                 //26
                 add(CommandBean("WIFI连接热点的名称和密码", "AT+STA/WIFI=", "", STYLE_SIX,"热点名称","热点密码","开启状态","模块IP","子网掩码","模块网关",""))
                 //27
-                add(CommandBean("WIFI TCP/UDP服务器参数", "AT+SOCK/WIFI=", "", STYLE_THIRD,"是否立即重连","目标地址","目标端口","","","",""))
+                add(CommandBean("WIFI TCP/UDP服务器参数", "AT+SOCK/WIFI=", "", STYLE_TWO,"目标地址","目标端口","","","","",""))
                 //28
                 add(CommandBean("WIFI MQTT服务器参数", "AT+MQTTSVR/WIFI=", "", STYLE_FIVE,"目标地址","目标端口","客户ID","用户名","密码","",""))
                 //29

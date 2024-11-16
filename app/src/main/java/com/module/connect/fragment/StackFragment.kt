@@ -56,7 +56,7 @@ class StackFragment : Fragment() {
                 ToastUtils.show("设置指令不能为空")
                 return@setOnClickListener
             }
-            mCustomCommand = binding.etSend.text.toString()
+            mCustomCommand = binding.etSend.text.toString().replace("[\r\n]","")
             if (!mCustomCommand.startsWith("AT")) {
                 ToastUtils.show("请输入正确指令")
                 return@setOnClickListener
@@ -87,7 +87,7 @@ class StackFragment : Fragment() {
                 } else {
                     mSendCommand = HomeFragment.SEND_COMMAND
                 }
-                stack = StackBean(mSendCommand, it)
+                stack = StackBean(mSendCommand, "")
                 stack?.let {stack->
                     mStackAdapter?.addData(stack)
                 }

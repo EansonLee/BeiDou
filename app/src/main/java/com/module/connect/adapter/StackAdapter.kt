@@ -1,10 +1,13 @@
 package com.module.connect.adapter
 
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.module.connect.bean.StackBean
 import com.module.connect.databinding.ItemStackBinding
+import com.module.connect.util.gone
+import com.module.connect.util.visible
 
 class StackAdapter : RecyclerView.Adapter<StackAdapter.StackHolder>() {
 
@@ -14,7 +17,10 @@ class StackAdapter : RecyclerView.Adapter<StackAdapter.StackHolder>() {
         RecyclerView.ViewHolder(mBinding.root) {
         fun render(bean: StackBean) {
             mBinding.tvSend.text = bean.send
-            mBinding.tvRes.text = bean.res
+            if (!TextUtils.isEmpty(bean.res)) {
+                mBinding.tvRes.text = bean.res
+//                mBinding.tvRes.gone()
+            }
 //            mBinding.root.setOnClickListener {
 //                onItemClick(bean)
 //            }

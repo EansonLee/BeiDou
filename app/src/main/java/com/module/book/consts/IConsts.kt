@@ -1,4 +1,4 @@
-package com.module.connect.consts
+package com.module.book.consts
 
 object IConsts {
     val KEY_CURRENT_ADDRESS = "key_current_address"

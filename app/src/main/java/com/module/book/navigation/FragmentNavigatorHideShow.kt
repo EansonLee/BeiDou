@@ -1,4 +1,4 @@
-package com.module.connect.navigation
+package com.module.book.navigation
 
 import android.content.Context
 import android.os.Bundle

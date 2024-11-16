@@ -1,4 +1,4 @@
-package com.module.connect.ext
+package com.module.book.ext
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

@@ -1,4 +1,4 @@
-package com.module.connect.activity
+package com.module.book.activity
 
 import android.graphics.Color
 import android.os.Bundle
@@ -7,8 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
 import com.blankj.utilcode.util.BarUtils
 import com.blankj.utilcode.util.ToastUtils
-import com.module.connect.R
-import com.module.connect.databinding.ActivityConnectBinding
+import com.module.book.R
+import com.module.book.databinding.ActivityConnectBinding
 
 class ConnectActivity : AppCompatActivity() {
 

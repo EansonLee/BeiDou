@@ -1,4 +1,4 @@
-package com.module.connect.application;
+package com.module.book.application;
 
 import android.app.Activity;
 import android.content.Context;

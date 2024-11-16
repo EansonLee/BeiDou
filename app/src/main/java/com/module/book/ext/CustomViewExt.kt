@@ -1,4 +1,4 @@
-package com.module.connect.ext
+package com.module.book.ext
 
 import android.view.View
 import android.view.ViewGroup
@@ -7,8 +7,8 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.blankj.utilcode.util.Utils
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
-import com.module.connect.fragment.HomeFragment
-import com.module.connect.util.SettingUtil
+import com.module.book.fragment.HomeFragment
+import com.module.book.util.SettingUtil
 
 
 fun ViewPager2.initMain(fragment: Fragment): ViewPager2 {

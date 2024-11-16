@@ -1,10 +1,10 @@
-package com.module.connect.navigation
+package com.module.book.navigation
 
 import android.view.View
 import androidx.navigation.Navigator
 import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.NavHostFragment
-import com.module.connect.R
+import com.module.book.R
 
 
 /**

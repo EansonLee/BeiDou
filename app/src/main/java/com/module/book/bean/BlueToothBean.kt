@@ -1,4 +1,4 @@
-package com.module.connect.bean
+package com.module.book.bean
 
 import android.bluetooth.BluetoothDevice
 

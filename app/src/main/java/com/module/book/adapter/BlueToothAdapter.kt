@@ -1,10 +1,10 @@
-package com.module.connect.adapter
+package com.module.book.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.module.connect.bean.BlueToothBean
-import com.module.connect.databinding.ItemBlueToothBinding
+import com.module.book.bean.BlueToothBean
+import com.module.book.databinding.ItemBlueToothBinding
 
 class BlueToothAdapter(private val onItemClick: (BlueToothBean) -> Unit) :
     RecyclerView.Adapter<BlueToothAdapter.BlueToothHolder>() {

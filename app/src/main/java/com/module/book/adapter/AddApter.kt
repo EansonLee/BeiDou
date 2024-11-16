@@ -1,11 +1,11 @@
-package com.module.connect.adapter
+package com.module.book.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.module.connect.R
+import com.module.book.R
 
 class AddApter : RecyclerView.Adapter<AddApter.AddHolder>() {
 

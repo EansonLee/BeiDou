@@ -1,16 +1,16 @@
-package com.module.connect.dialog
+package com.module.book.dialog
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.module.connect.adapter.BlueToothAdapter
-import com.module.connect.bean.BlueToothBean
-import com.module.connect.databinding.DialogBlueToothListBinding
-import com.module.connect.ext.makeArguments
-import com.module.connect.ext.params
-import com.module.connect.fragment.HomeFragment
+import com.module.book.adapter.BlueToothAdapter
+import com.module.book.bean.BlueToothBean
+import com.module.book.databinding.DialogBlueToothListBinding
+import com.module.book.ext.makeArguments
+import com.module.book.ext.params
+import com.module.book.fragment.HomeFragment
 
 class BlueToothListDialog : BaseFragmentDialog<DialogBlueToothListBinding>() {
 

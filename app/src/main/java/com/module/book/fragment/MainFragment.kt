@@ -1,4 +1,4 @@
-package com.module.connect.fragment
+package com.module.book.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
-import com.module.connect.R
-import com.module.connect.ext.init
-import com.module.connect.ext.initMain
-import com.module.connect.ext.interceptLongClick
+import com.module.book.R
+import com.module.book.ext.init
+import com.module.book.ext.initMain
+import com.module.book.ext.interceptLongClick
 
 class MainFragment : Fragment() {
 

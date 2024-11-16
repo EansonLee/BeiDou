@@ -1,4 +1,4 @@
-package com.module.connect.activity;
+package com.module.book.activity;
 
 import android.os.Bundle;
 import android.view.View;
@@ -9,8 +9,8 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.module.connect.R;
-import com.module.connect.adapter.AddApter;
+import com.module.book.R;
+import com.module.book.adapter.AddApter;
 
 import java.util.ArrayList;
 import java.util.List;

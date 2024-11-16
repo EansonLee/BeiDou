@@ -1,4 +1,4 @@
-package com.module.connect
+package com.module.book
 
 import org.junit.Test
 

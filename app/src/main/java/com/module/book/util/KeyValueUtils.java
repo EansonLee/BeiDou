@@ -1,4 +1,4 @@
-package com.module.connect.util;
+package com.module.book.util;
 
 import android.os.Parcelable;
 

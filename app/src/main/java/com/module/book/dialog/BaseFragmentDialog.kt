@@ -1,11 +1,11 @@
-package com.module.connect.dialog
+package com.module.book.dialog
 
 import android.content.DialogInterface
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatDialogFragment
 import androidx.viewbinding.ViewBinding
-import com.module.connect.R
+import com.module.book.R
 
 /**
  * @author: linjunhao

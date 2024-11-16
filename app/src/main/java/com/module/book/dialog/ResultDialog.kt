@@ -1,4 +1,4 @@
-package com.module.connect.dialog
+package com.module.book.dialog
 
 import android.os.Bundle
 import android.text.TextUtils
@@ -6,9 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentManager
-import com.module.connect.databinding.DialogResultBinding
-import com.module.connect.ext.makeArguments
-import com.module.connect.ext.params
+import com.module.book.databinding.DialogResultBinding
+import com.module.book.ext.makeArguments
+import com.module.book.ext.params
 
 class ResultDialog : BaseFragmentDialog<DialogResultBinding>() {
 

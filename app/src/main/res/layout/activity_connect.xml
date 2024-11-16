@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         app:defaultNavHost="true"
         app:navGraph="@navigation/home"
-        android:name="com.module.connect.navigation.NavHostFragmentHideShow"
+        android:name="com.module.book.navigation.NavHostFragmentHideShow"
         android:layout_height="match_parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

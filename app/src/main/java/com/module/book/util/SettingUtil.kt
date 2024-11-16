@@ -1,19 +1,15 @@
-package com.module.connect.util
+package com.module.book.util
 
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
-import android.graphics.PorterDuff
 import android.graphics.drawable.GradientDrawable
 import android.graphics.drawable.StateListDrawable
-import android.os.Build
 import android.preference.PreferenceManager
 import android.view.View
-import android.widget.ProgressBar
 import androidx.core.content.ContextCompat
 import com.blankj.utilcode.util.Utils
-import com.module.connect.R
-import com.tencent.mmkv.MMKV
+import com.module.book.R
 import java.lang.reflect.InvocationTargetException
 import kotlin.math.roundToInt
 

@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 def androidID = rootProject.ext.androidId
@@ -62,4 +63,11 @@ dependencies {
 
     //底部bottomBar
     implementation 'com.github.ittianyu:BottomNavigationViewEx:2.0.4'
+
+    def room_version = "2.5.0"
+
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version" // For Java
+    kapt "androidx.room:room-compiler:$room_version" // For Kotlin
+    implementation "androidx.room:room-ktx:$room_version"
 }

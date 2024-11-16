@@ -37,6 +37,12 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".activity.BookDetailActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
+        </activity>
+
     </application>
 
 
